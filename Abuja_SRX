@@ -172,7 +172,7 @@ set security ike proposal L3-FUHSO-IKE-PROPOSAL authentication-method pre-shared
 set security ike proposal L3-FUHSO-IKE-PROPOSAL dh-group group5
 set security ike proposal L3-FUHSO-IKE-PROPOSAL authentication-algorithm sha1
 set security ike proposal L3-FUHSO-IKE-PROPOSAL encryption-algorithm aes-256-cbc
-set security ike proposal L3-FUHSO-IKE-PROPOSAL lifetime-seconds 86400
+set security ike proposal L3-FUHSO-IKE-PROPOSAL lifetime-seconds 864000
 set security ike policy IKE-POLICY mode main
 set security ike policy IKE-POLICY proposals IKE-PROPOSAL
 set security ike policy IKE-POLICY pre-shared-key ascii-text "$9$I7TEhrMWxbs4ylb2g4GU69Cp1RSre"
