@@ -1,0 +1,2361 @@
+L3.ABJ.IGI.CRSW> show configuration | display set | no-more
+set version 20.4R3.8
+set system host-name L3.ABJ.IGI.CRSW
+set system root-authentication encrypted-password "$5$TRKvsdr4$QoNrBtSzfeuGdvIluEyx2b31NODcLki7eLLJkCHlOn/"
+set system login class CONFIG-VIEW permissions view-configuration
+set system login class CONFIG-VIEW allow-commands show
+set system login message "\n\n\n\t!!!!!UNAUTHORIZED_USE_OF_THIS_DEVICE_IS_STRICTLY_PROHIBITHED!!!!!\n\t!!!!!ONLY_AUTHORIZED_LAYER3_STAFF_ARE_ALLOWED_ACCESS!!!!!\n\n\tPlease\ contact\ 'networkgroup@layer3.cc'\ if\ you\n\tsee\ this\ Banner\ ........Thank\ you\n\n\n"
+set system services ftp
+set system services ssh root-login deny
+set system services ssh protocol-version v2
+set system services ssh max-sessions-per-connection 32
+set system services netconf ssh
+set system services dhcp-local-server group DHCP_DATA interface irb.201
+set system services dhcp-local-server group DHCP_PRI_INT interface irb.22
+set system services dhcp-local-server group DHCP_IHMS interface irb.901
+set system services dhcp-local-server group DHCP_UBER interface irb.612
+set system services dhcp-local-server group ZENITH-OFFICE1 interface irb.892
+set system services dhcp-local-server group ZENITH-OFFICE2 interface irb.874
+set system services dhcp-local-server group SABC-DHCP interface irb.981
+set system services dhcp-local-server group DHCP_RAYUWA interface irb.902
+set system services dhcp-local-server group UNIFI-CONTROLLER interface irb.569
+set system services dhcp-local-server group NIG-HEALTH-WATCH interface irb.409
+set system services web-management http
+set system services outbound-ssh client nsm-10.199.0.90 device-id BCC14D
+set system services outbound-ssh client nsm-10.199.0.90 secret "$9$8d/LdboJGUHqGU/Cp0IRYg4ojHz369tun6lK8X-dP5Tz/C"
+set system services outbound-ssh client nsm-10.199.0.90 services netconf
+set system services outbound-ssh client nsm-10.199.0.90 10.199.0.90 port 7804
+set system time-zone Africa/Lagos
+set system authentication-order radius
+set system authentication-order password
+set system name-server 41.217.204.165
+set system name-server 4.2.2.2
+set system name-server 8.8.8.8
+set system radius-server 10.199.0.233 secret "$9$7FNb24oGDkPxNi.5T3nyleW7-s24"
+set system radius-options password-protocol mschap-v2
+set system syslog user * any emergency
+set system syslog host 10.73.73.2 any any
+set system syslog host 10.73.73.50 any any
+set system syslog host 172.17.17.249 any any
+set system syslog host 172.17.17.249 port 514
+set system syslog host 172.17.17.249 facility-override authorization
+set system syslog host 172.17.17.249 structured-data
+set system syslog host 172.17.28.331 any any
+set system syslog host 172.17.28.331 port 514
+set system syslog host 172.17.28.331 facility-override authorization
+set system syslog host 172.17.28.331 structured-data
+set system syslog host 172.17.28.106 any any
+set system syslog host 172.17.28.106 port 514
+set system syslog host 172.17.28.106 structured-data
+set system syslog host 172.17.17.223 any any
+set system syslog host 172.17.17.252 any any
+set system syslog host 172.17.17.252 port 5140
+set system syslog host 172.17.17.226 any any
+set system syslog host 172.17.17.4 any any
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system syslog file default-log-messages any any
+set system syslog file default-log-messages match "(requested 'commit' operation)|(requested 'commit synchronize' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|cm_device|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)"
+set system syslog file default-log-messages structured-data
+set system archival configuration transfer-on-commit
+set system archival configuration archive-sites "ftp://nsi:Layer3123@10.199.0.70:21"
+set system archival configuration archive-sites "ftp://administrator:Layer3123@10.199.0.70:21"
+set system processes dhcp-service traceoptions file dhcp_logfile
+set system processes dhcp-service traceoptions file size 10m
+set system processes dhcp-service traceoptions level all
+set system processes dhcp-service traceoptions flag all
+set system ntp boot-server 10.199.0.7
+set system ntp server 10.199.0.10
+set system ntp server 144.217.67.230
+set system ntp server 67.217.112.181
+set system ntp server 198.55.111.5
+set system ntp server 45.33.41.203
+set system ntp server 81.168.77.149
+set system ntp server 10.199.0.7
+set chassis aggregated-devices ethernet device-count 6
+set interfaces ge-0/0/0 description TRUNK-to-LAYER3_ABUJA_ZAIN_SWITCH1
+set interfaces ge-0/0/0 ether-options 802.3ad ae1
+set interfaces xe-0/0/0 unit 0 family ethernet-switching
+set interfaces ge-0/0/1 description CONNECTION-TO-CLOUDSWITCH
+set interfaces ge-0/0/1 ether-options 802.3ad ae0
+set interfaces xe-0/0/1 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/2 description LINK-to-LAYER3_ABUJA_ROUTER-LAN
+set interfaces ge-0/0/2 mtu 9192
+set interfaces ge-0/0/2 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HELLO-TRACTOR
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Dunamis
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EXARO_Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IL0-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Lagos_internet_clients
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Layer3Network
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Management_VLAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NAF-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NIROTECH-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members KSA_MEDICAL_CENTRE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ICRC-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PIND_STORAGE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PIND_STORAGE_WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members SYNTELL-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members TEMP-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members TEMP-Internet2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UAM-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WHO2-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members YENTECH-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MEDALLION-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CHAN_CHARIS
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members DPI-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NAVY-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ICSL_Abuja
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PRE-PAYGO_VR-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members RVI_INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members STERLINGBANK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PRE-PAYGO2_VR-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PASBBOXX
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members BCN-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PIND-GH-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UBA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members zenit2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MonacomWimax
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members STERLING_BANK_WIMAX
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NEXIM-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NATIONAL_ASSEMBLY
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UNDP-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3-SSL-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PRE-PAYGO3_VR-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AGIP_MANAGEMENT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ICSL-UNITYBANK-LH
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ARM-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ECOBANK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members VSO-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3-BREAKOUT-2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members POPULATION_COUNCIL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AFRICA-DEV-BANK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AGIP-VPN10
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-USAID
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members L3-TO-VRF
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PRIVATE_INTERNET-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IBB-UNIVERISTY-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3-OFFICE-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GEOQINETIQ
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members COAS
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EFCC_Abuja
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CENTRIFUGE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EFCC-ABJ-VILLA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NET-APP
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members SV-ABUJA-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WEB-INDICIES
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members VIRTUAL-SA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ON-APP-CONTROLLER
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members JUNIPER-LAB-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ABU-RESIDENCE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-PROPCOM
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-OFFICE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members DEPT-OF-DEFENSE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3-PUBLIC-SIP
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UBA_VPN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members SOLINA-HEALTH
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HORIZON-INF-SERVICES
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ON-APP-KVM-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PIND-SIP-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EXARO_INTERNET2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-INDONESIA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UNDP-UN-HOUSE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ETACT_LIFECAMP_INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IRIS-SMART-TOTAL-HOUSE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members OXFORD-POLICY-MANAGEMENT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members BRITISH-HIGH-COMMISSION
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members COFFEY
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members DIAMOND-BANK-VPN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MILITARY-PENSIONS-BOARD
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HERITAGE-BANK-RESIDENCE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EFCC-KARU
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members VSO2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MIN-OF-FINANCE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-RSD
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members DBI-INTERNET-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members TEST-SAMSON
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members DIAMOND-UAC-NASS
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PRIVATE-Internet
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WORLDBANK-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Radial_Circle
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CIRCUMTECH-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EFCC-HOMBORI
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AIB_AIRPORT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Gadzama
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WHO-ASOKORO-OLDCBN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MAINEONE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members JOSEPH-NATHANIEL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IPNX-GREECE_EMBASSY
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Sterling_longhaul
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UNDP-UN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members JAIZ-BANK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UNI-JOS-TEST-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AFRICA-DEV-BANK-RADIO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NAF_COAS-Guest-kado
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AGIP-INTERNET-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AGIP-INTERNET-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ETISALAT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NAF-CAS-OFFICE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN1
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN3
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN4
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN5
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN6
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN7
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3-SECONDARY-DNS
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members COAS-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AsoSavings
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members POPC_BREAKTHROUGH
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GAIN-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NEXIM-ABJ-CAL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members JUNIPER-LAB-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Ben
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members zenitmetro
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NGNOG-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IOM
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WHO-AROCHUKWU-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ASO-SAVINGS-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HEALTH-FINANCE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NCDC-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ASO-SAVINGS-LH
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members DBI-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members RAYUWA-INT-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ABT-ASSOCIATES
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members VENTURES-PLATFORMS
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AIRTEL-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members TEST
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3-ABU-RESIDENCE-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UMB-MGIC
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-KATAMPE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-APO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-VPN-WUSE2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-VPN-AREA3
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3-NSDC
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EFCC-IDU2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ETISALAT-SIP-SERVICE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ETISALAT-SIP2-SERVICE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members L3-AEDC-KANO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-MINNA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Sterling_Longhaul_DR
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AIRTEL-BUCHANA-CLOSE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CIVIL-INNOVATION-LAB
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ADAMS-SMITH
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members YOUTH-HUB-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ICRC-IDU
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HERITAGE-BANK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Unified_LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ON-APP-CONTROLLER-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MTN-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ON-APP-TEMPORAL3900
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IOM-BUCHANAN-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members DIAMOND-ABUJA-LAGOS
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-LAFIA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-KUBWA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members INTL-REP-INSTITUTE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PANAMA-SERVER
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GEEKHUB-NINAS
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-SULEJA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CIA-TEST
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members FLUENT-SERVICE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members VCD-EXTERNAL-NETWORK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IMF-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UNICEF-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ENTERPRISE-NSX
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IRIS-SMART-IMM
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CREATIVE_ASSOCIATE_INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AEDC-VPN2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NCDC-GADUWA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PARTNERS-WEST-AFRICA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CCCRN-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IOM-ABUJA-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IOM-CALABAR-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UMB-MAGIC-WUSE2-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IOM-KANO-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NIZAMIYE-HOSPITAL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NBS-INTERNET-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MCO-INT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NASSCO-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NASSCO-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MINES-AND-STEEL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HJFMRI_DRL_ASO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members SWIFT-NETWORK-UNITY-BANK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CNFA-DANUBE-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members E-HEALTH4EVERYONE-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NASSCO-SSL-EXTERNAL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members KAUFMAN_GLOBAL_LONGHAUL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members SDWAN_TEST
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CREATIVE_ASSOCIATE_MAITAMA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members OANDO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-EXT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ECOBANK_LH
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WHO-UN-HOUSE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HALL_7_INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ADAM_SMITH_OGUN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AQUA-CONSULT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WIOCC-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NFIU-WUSEII
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HALL7-INTERNET-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GEORGES-RESIDENCE-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GEORGES-RESIDENCE-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members TEST2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members PSI_NIGERIA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members TEST1
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members BRIDGE-ESTATE-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members BRIDGE-ESTATE-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members BRIDGE-TEST
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UBEC-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UBEC_INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NIG-HEALTH-WATCH-INTERNET-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EFCC-IDU-INT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EFCC-MUKTAR-KARU
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IRIS-SMART-MAITAMA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WORKS-AND-CONNECT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IPTELECOM-NET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3_CLOUD_INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UNICEF-AKURE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CLOUD_EXSi_HOST_NETWORK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GMIKE_INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GT_BANK_LH
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members TANGERINE-LIFE
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members RAYUWA-INT-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NCC-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Cloud_VI_Managment
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members INTEGRAL-SOLUTIONS
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members FTTH-LAB
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NASSCO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GIZ-ASOKORO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members CLOUD_DEMO_ENVIRONMENT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WINROCK
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AIB-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UNICEF-KANO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IOM-SAUKA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IRIS-SMART-SAUKA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IPTELECOMS-SAUKA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WORLD_BANK_ANNEX
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members HAMU-LEGAL
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members EFCC-WUSE-INT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WORLBANK-MAITAMA
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members FTTH-LAB2
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ZENITH-DMD-OFFICE-INTERNET-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ZENITH-ED-OFFICE-INTERNET-WAN-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ZENITH-ED-OFFICE-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ZENITH-DMD-OFFICE-INTERNET-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members UNIFI-CONTROLLER
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MTN-FUHSO
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members AFRICAN-FIRST-LADY-PEACE-MISSION
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members VERSE-CONSULTING-AND-IT
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NETHERLAND-EMBASSY
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ITALLIAN-EMBASSY
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members LAYER3-BREAKOUT-3
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members MONITOR-INTERNET
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members SACB-WAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members SACB-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members Songhai-Health
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ACIOE-Associate
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members FHI360
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members John-Snow
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members IRIS-SMART-ENUGU
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members NIG-HEALTH-WATCH-INTERNET-LAN
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members GIZ-MOVE
+set interfaces xe-0/0/2 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/3 description VPLS-INTERFACE
+set interfaces ge-0/0/3 mtu 9192
+set interfaces ge-0/0/3 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members Management_VLAN
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members EFCC_VPN
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members Sterling_longhaul
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ARM-LONGHAUL
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members SVGovernment
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members SkyVision-HORIZON
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members SkyVision-HORIZON_2
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ECOBANK
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ICSL-UNITYBANK-LH
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members zenith
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members FIN_Insurance_FCMB
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members FBN
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ICSL_Abuja
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members IS-LAG-ABUJA
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members SI-GRE-TEST
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members DIAMOND-ZONE4-LAGOS
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members NAC-REMEDIATION
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members DIAMOND-ABUJA-LAGOS
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members IS-DARK-FIBRE
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members FBNCAPITAL
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members AsoSavings
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members zenitmetro
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ASO-SAVINGS-LH
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members Unified_LAN
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members LAYER3-DATA-NETWORK
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ON-APP-CONTROLLER
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members UBA_VPN
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members Layer3Network
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members LAYER3-VOICE-NETWORK
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ESXi-iLO-MANAGEMENT
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ON-APP-KVM-WAN
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members AGIP-INTERNET-LAN
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ETISALAT-SIP-SERVICE
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ICRC-IDU
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members IPMI-MANAGEMENT
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members BANDWIDTH-TEST
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members NEXIM-ABJ-CAL
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members Port-Mirror
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members SWIFT-NETWORK-UNITY-BANK
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members KAUFMAN_GLOBAL_LONGHAUL
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ECOBANK_LH
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members GT_BANK_LH
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members CLOUD_EXSi_HOST_NETWORK
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members Cloud_VI_Managment
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members CLOUD_DEMO_ENVIRONMENT
+set interfaces xe-0/0/3 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/4 description AIRTEL-INTERNET
+set interfaces ge-0/0/4 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/4 unit 0 family ethernet-switching vlan members AIRTEL-INTERNET
+set interfaces xe-0/0/4 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/5 description ETISALAT-INTERNET
+set interfaces ge-0/0/5 mtu 9192
+set interfaces ge-0/0/5 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/5 unit 0 family ethernet-switching vlan members ETISALAT
+set interfaces xe-0/0/5 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/6 description TRUNK-to-LAYER3_ABUJA_ACCESS_SWITCH1
+set interfaces ge-0/0/6 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ICSL_Abuja
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members Management_VLAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members MonacomWimax
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members PRIVATE-Internet
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members STERLINGBANK
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members STERLING_BANK_WIMAX
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members SYNTELL-Internet
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members Unified_LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members WHO2-Internet
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members UBA
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members zenit2
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members PIND_STORAGE
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members PIND-GH-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members WHO_VPN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ARM-LONGHAUL
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ARM-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members LAYER3-BREAKOUT-2
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members LAYER3-DATA-NETWORK
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members GEOQINETIQ
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members TEST2
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members JUNIPER-LAB-WAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members LAYER3-RESOURCES-NETWORK
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members LAYER3-VOICE-NETWORK
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members Layer3Network
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members JUNIPER-LAB-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members SI-GRE-TEST
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members L3NAC-TEST
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members UBA_VPN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AsoSavings
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members SA-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members PIND-SIP-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ECOBANK
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN11
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN9
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN1
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN2
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN3
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN4
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN5
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN6
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN7
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN8
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN10
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP_MANAGEMENT
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members TEST-SAMSON
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members DIAMOND-UAC-NASS
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members JAIZ-BANK
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members UNI-JOS-TEST-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AGIP-INTERNET-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN1
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN2
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN3
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN4
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN5
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN6
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN7
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NEXIM-ABJ-CAL
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members EFCC_Abuja
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members EFCC_VPN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members EFCC-ABJ-VILLA
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members GAIN-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members Ben
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members zenitmetro
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NGNOG-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members IOM
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ETISALAT-SIP-SERVICE
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ASO-SAVINGS-LH
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members HEALTH-FINANCE
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NCDC-VIRTUAL-ROUTER-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NCDC-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members TEST-REDIRECT
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members BANDWIDTH-TEST
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ADAMS-SMITH
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members EFCC-IDU2
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members LAYER3-CCTV
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ICRC-IDU
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members WORLDBANK-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIFIED-TEST
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members L3-AEDC-KANO
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members Sterling_Longhaul_DR
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-APO
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-ASOKORO-VPN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-KATAMPE
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-VPN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-VPN-AREA3
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-VPN-WUSE2
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-VPN2
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members HERITAGE-BANK
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members DIAMOND-ABUJA-LAGOS
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-LAFIA
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members PRIVATE_INTERNET-WAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-IDAH
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-LOKOJA
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AEDC-MINNA
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ICRC-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members UNICEF-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members EFCC-ABJ-VILLA-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members MTN-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NFIU-VLAN-24
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NFIU-VLAN-100
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NFIU-VLAN-102
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NFIU-VLAN-103
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NFIU-VLAN-104
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NFIU-VLAN-105
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NFIU-VLAN-106
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NASSCO-SSL-EXTERNAL
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members IHMS-INTERNET-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members PASBBOXX
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members CREATIVE_ASSOCIATE_INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NBS-INTERNET-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NBS-INTERNET-WAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ECOBANK_LH
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members all
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members EXTERNAL-FACING-APP-DMZ
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members CIVIL-INNOVATION-LAB
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members CONTENT-OASIS-EXT
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members HALL_7_INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members TEST1
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members NIZAMIYE-HOSPITAL
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members BRIDGE-ESTATE-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members BRIDGE-TEST
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members EFCC-MUKTAR-KARU
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members EFCC-KARU
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members FLUENT-SERVICE
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members GMIKE_INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members DBI-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members DBI-INTERNET-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members RAYUWA-INT-LAN
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members AIB-INTERNET
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members LAYER3-BREAKOUT-3
+set interfaces xe-0/0/6 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/7 description TRUNK-TO-BCN
+set interfaces ge-0/0/7 flexible-vlan-tagging
+set interfaces ge-0/0/7 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ECOBANK_LH
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ASO-SAVINGS-LH
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members AsoSavings
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ASO-SAVINGS-INTERNET
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ISWaec
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members IRIS-SMART-SAUKA
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members UBA_VPN
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members BBC
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ISG4S
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ISStanbic
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ISMICRO-SOFT
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members WHO-AROCHUKWU-INTERNET
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members KSA_MEDICAL_CENTRE
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members IPTELECOMS-SAUKA
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members UNDP-UN-HOUSE
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members WHO-ASOKORO-OLDCBN
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members WHO_VPN
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members HERITAGE-BANK-RESIDENCE
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members AIB_AIRPORT
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members DIAMOND-BANK-VPN
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members zenitmetro
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members HERITAGE-BANK
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members IOM-SAUKA
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members HJFMRI_DRL_ASO
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ZENITH-DMD-OFFICE-INTERNET-LAN
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ZENITH-ED-OFFICE-INTERNET
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan-rewrite translate 223 3923
+set interfaces xe-0/0/7 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/8 description LAYER3_ABUJA_SRX-ge-0/0/0
+set interfaces ge-0/0/8 mtu 9192
+set interfaces ge-0/0/8 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members AIRTEL-LH-VLAN500-2
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members Layer3Network
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members Unified_LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members Management_VLAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members TEST2
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PRE-PAYGO_VR-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PRE-PAYGO_VR-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PRE-PAYGO2_VR-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PRE-PAYGO2_VR-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PIND-GH-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PIND-GH-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PRE-PAYGO3_VR-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PRE-PAYGO3_VR-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-NAC
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-VOICE-NETWORK
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-RESOURCES-NETWORK
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-DATA-NETWORK
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PRIVATE_INTERNET-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-OFFICE-INTERNET
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members GRAND-TEST
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NET-APP
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members JUNIPER-LAB-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-PUBLIC-SIP
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ON-APP-MANAGEMENT
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ESXi-iLO-MANAGEMENT
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members IPMI-MANAGEMENT
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members L3NAC-TEST
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ON-APP-KVM-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ON-APP-KVM-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PIND-SIP-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PIND-SIP-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members SA-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ADAMS-SMITH
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members COFFEY
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members DBI-INTERNET-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members AGIP-INTERNET-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members AGIP-INTERNET-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members POPULATION_COUNCIL
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NAF-CAS-OFFICE
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN1
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN2
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN3
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN4
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN5
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN6
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN7
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members COAS
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members COAS-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAB-8
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members DIAMOND-ABUJA-LAGOS
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NEXIM-ABJ-CAL
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members MILITARY-PENSIONS-BOARD
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ETISALAT-SIP-SERVICE
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NCDC-INTERNET
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NCDC-VIRTUAL-ROUTER-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members TEST-REDIRECT
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-CCTV
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIFIED-TEST
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ETISALAT-SIP2-SERVICE
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ON-APP-CONTROLLER
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ON-APP-CONTROLLER-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ON-APP-TEMPORAL3900
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NSX-ESXI-MGT
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members JUNIPER-CSO-UNDERLAY
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members IHMS-INTERNET-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NBS-INTERNET-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NBS-INTERNET-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NASSCO-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NASSCO-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members EXTERNAL-FACING-APP-DMZ
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members HALL_7_INTERNET
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members HALL7-INTERNET-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members GEORGES-RESIDENCE-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members GEORGES-RESIDENCE-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members BRIDGE-ESTATE-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members BRIDGE-ESTATE-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members UBEC_INTERNET
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members UBEC-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members CLOUD_MIGRATIO_TEST
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members L3-EXTERNAL-FACING-APP-DMZ_CLOUD
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-LAN-to-9MOBILE
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members RAYUWA-INT-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members RAYUWA-INT-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members DBI-INTERNET
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ZENITH-DMD-OFFICE-INTERNET-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ZENITH-ED-OFFICE-INTERNET-WAN-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ZENITH-ED-OFFICE-INTERNET
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ZENITH-DMD-OFFICE-INTERNET-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members SACB-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members SACB-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-WEBSITE-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members LAYER3-WEBSITE-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NIG-HEALTH-WATCH-INTERNET-WAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members NIG-HEALTH-WATCH-INTERNET-LAN
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PARTNERS-WEST-AFRICA
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members PWAN-INTERNET
+set interfaces xe-0/0/8 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/9 description CONNECTION_TO_ENTERPRISE_MGT_SWITCH
+set interfaces ge-0/0/9 mtu 9192
+set interfaces ge-0/0/9 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members all
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members VCD-EXTERNAL-NETWORK
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members IMF-INTERNET
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members UNICEF-INTERNET
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members NASSCO-LAN
+set interfaces xe-0/0/9 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/10 description TRUNK-to-LAYER3_ABUJA_FIBRE_SWITCH1
+set interfaces ge-0/0/10 mtu 9192
+set interfaces ge-0/0/10 link-mode full-duplex
+set interfaces ge-0/0/10 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members 56
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members 85
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members 500
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members POPULATION_COUNCIL
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CONTENT-OASIS-USAID
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SKYVISION_UNITY-BANK
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SKYVISION_BOLINGO
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CONTENT-OASIS-PROPCOM
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CONTENT-OASIS-OFFICE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members DEPT-OF-DEFENSE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IS-LAG-ABUJA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members DIAMOND-ZONE4-LAGOS
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members FLUENT-SERVICE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CVC-MEDALLION
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members WORLDBANK-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SOLINA-HEALTH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members HORIZON-INF-SERVICES
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SKYVISION-KARVIS-TECHNOLOGY
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SVGOVERNMENT-2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EXARO_INTERNET2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CONTENT-OASIS-INDONESIA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IRIS-SMART-TOTAL-HOUSE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members BRITISH-HIGH-COMMISSION
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ADAMS-SMITH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members DIAMOND-BANK-VPN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members DIAMOND-ABUJA-LAGOS
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IS-MAY-FRESH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members HERITAGE-BANK-RESIDENCE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SKYVISION_SAKATE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members VSO2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members MIN-OF-FINANCE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SKYVISION-EUPHRATES
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CONTENT-OASIS-RSD
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SKYVISION_HORIZON-NEW-MAITAMA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members HERITAGE-BANK
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members Gadzama
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members OXFORD-POLICY-MANAGEMENT
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members MAINEONE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members JOSEPH-NATHANIEL
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IPNX-GREECE_EMBASSY
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IS-DARK-FIBRE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members FBNCAPITAL
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members UNDP-UN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members UBA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-INTERNET-LAN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NAF-CAS-OFFICE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members Radial_Circle
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN1
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN3
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN4
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN5
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN6
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN7
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NEXIM-ABJ-CAL
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members POPC_BREAKTHROUGH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IOM
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ETISALAT-SIP-SERVICE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-VPN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members PRIVATE-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NCDC-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ASO-SAVINGS-LH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members RAYUWA-INT-LAN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AIRTEL-DANUBE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-VPN2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NCDC-VIRTUAL-ROUTER-LAN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ARM-LONGHAUL
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AIRTEL-BUCHANA-CLOSE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members VENTURES-PLATFORMS
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-KATAMPE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-APO
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ICRC-IDU
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members all
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members LAYER3-ABU-RESIDENCE-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-VPN-AREA3
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-VPN-WUSE2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members BANDWIDTH-TEST
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members LAYER3-NSDC
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members L3-AEDC-KANO
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-MINNA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members Sterling_Longhaul_DR
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CIVIL-INNOVATION-LAB
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members YOUTH-HUB-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-ASOKORO-VPN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members MTN-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IOM-BUCHANAN-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-LAFIA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-KUBWA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members INTL-REP-INSTITUTE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members GEEKHUB-NINAS
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-SULEJA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-IDAH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AEDC-LOKOJA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CIA-TEST
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AIRTEL-LH-VLAN3304
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members VCD-EXTERNAL-NETWORK
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IMF-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members UNICEF-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-ABJ-VILLA-LAN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IS-RIVERS-HOUSE-CBD
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members GAIN-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members PARTNERS-WEST-AFRICA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members UMB-MAGIC-WUSE2-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SWIFT-NETWORK-UNITY-BANK
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CNFA-DANUBE-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AIRTEL_ELDORET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members E-HEALTH4EVERYONE-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members KAUFMAN_GLOBAL_LONGHAUL
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CREATIVE_ASSOCIATE_MAITAMA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN13
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN14
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN15
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN16
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN17
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN18
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN12
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members OANDO
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ECOBANK_LH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CONTENT-OASIS-EXT
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AQUA-CONSULT
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AIB-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ECI
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ECOBANK
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC_Abuja
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC_VPN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members GATEWAYINTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members GRAND-TEST
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IBGPlink
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IL0-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ISMICRO-SOFT
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members Lagos_internet_clients
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members Management_VLAN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members MonacomWimax
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NAF-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NIROTECH-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ICRC-INTERNET
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members STERLINGBANK
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members STERLING_BANK_WIMAX
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SVGovernment
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SYNTELL-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SkyVision-HORIZON
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members Sterling_longhaul
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members TEMP-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members TEMP-Internet2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members UAM-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members UBA_VPN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members Unified_LAN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members YENTECH-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members zenit2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members zenith
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members zenithaminu2maitama
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members zenitmetro
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EXARO_Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members PIND_STORAGE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members PIND_STORAGE_WAN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members MEDALLION-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members FinBank_Insurance
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SKYVISION_SCC
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members CHAN_CHARIS
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN1
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN3
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN4
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN5
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN6
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN7
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN8
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN9
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN10
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP-VPN11
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NEXIM-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NATIONAL_ASSEMBLY
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members UNDP-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members FIN_INSURANCE_STORAGE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NAVY-Internet
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AGIP_MANAGEMENT
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SkyVision-HORIZON_2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ICSL-UNITYBANK-LH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members AsoSavings
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members SKYVISION-MORTGAGE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-ABJ-VILLA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NFIU-WUSEII
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members GEORGES-RESIDENCE-LAN
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-DARK-FIBRE
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-SERVER1
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-SERVER2
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-SERVER3
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-SERVER4
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members IRIS-SMART-MAITAMA
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-KARU
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members EFCC-MUKTAR-KARU
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members GT_BANK_LH
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members VERSE-CONSULTING-AND-IT
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ITALLIAN-EMBASSY
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members NETHERLAND-EMBASSY
+set interfaces xe-0/0/10 description TRUNK-TO-10G-SWITCH
+set interfaces xe-0/0/10 unit 0 family ethernet-switching interface-mode trunk
+set interfaces xe-0/0/10 unit 0 family ethernet-switching vlan members all
+set interfaces xe-0/0/10 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/11 description PRIVATE-IP-INTERNET
+set interfaces ge-0/0/11 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/11 unit 0 family ethernet-switching vlan members PRIVATE-Internet
+set interfaces xe-0/0/11 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/12 description IXPN-ABJ-CONNECTION-TO-MX80
+set interfaces ge-0/0/12 unit 0 family ethernet-switching vlan members ABJ-MED-IBGP
+set interfaces xe-0/0/12 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/13 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/14 unit 0 family ethernet-switching vlan members UNIFI-CONTROLLER
+set interfaces xe-0/0/14 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/15 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/16 unit 0 family ethernet-switching interface-mode access
+set interfaces xe-0/0/16 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/17 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/18 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/18 unit 0 family ethernet-switching vlan members HERITAGE-BANK-RESIDENCE
+set interfaces ge-0/0/18 unit 0 family ethernet-switching vlan members ECOBANK_LH
+set interfaces xe-0/0/18 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/19 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/0/20 description PHYSICAL-LINK-TO-CORE-SWITCH-01
+set interfaces ge-0/0/20 gigether-options 802.3ad ae2
+set interfaces xe-0/0/20 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/21 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/22 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/23 unit 0 family ethernet-switching storm-control default
+set interfaces et-0/0/24 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/24:0 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/24:1 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/24:2 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/24:3 unit 0 family ethernet-switching storm-control default
+set interfaces et-0/0/25 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/25:0 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/25:1 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/25:2 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/25:3 unit 0 family ethernet-switching storm-control default
+set interfaces et-0/0/26 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/26:0 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/26:1 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/26:2 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/26:3 unit 0 family ethernet-switching storm-control default
+set interfaces et-0/0/27 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/27:0 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/27:1 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/27:2 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/0/27:3 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/1/0 unit 0 family ethernet-switching
+set interfaces xe-0/1/0 unit 0 family ethernet-switching
+set interfaces ge-0/1/1 unit 0 family ethernet-switching
+set interfaces xe-0/1/1 unit 0 family ethernet-switching
+set interfaces ge-0/1/2 unit 0 family ethernet-switching
+set interfaces xe-0/1/2 unit 0 family ethernet-switching
+set interfaces ge-0/1/3 unit 0 family ethernet-switching
+set interfaces ge-1/0/0 description BACKUP_TRUNK_ZAIN_POP
+set interfaces ge-1/0/0 ether-options 802.3ad ae1
+set interfaces ge-1/0/1 description CONNECTION-TO-CLOUDSWITCH-2
+set interfaces ge-1/0/1 ether-options 802.3ad ae0
+set interfaces ge-1/0/2 description PHYSICAL-LINK-TO-CORE-SWITCH-02
+set interfaces ge-1/0/2 gigether-options 802.3ad ae2
+set interfaces ge-1/0/4 description WIOCC-INTERNET
+set interfaces ge-1/0/4 mtu 9216
+set interfaces ge-1/0/4 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/4 unit 0 family ethernet-switching vlan members WIOCC-INTERNET
+set interfaces ge-1/0/5 description 9MOBILE-LONGHAUL
+set interfaces ge-1/0/5 mtu 9192
+set interfaces ge-1/0/5 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/5 unit 0 family ethernet-switching vlan members ETISALAT-LH
+set interfaces ge-1/0/6 description BACKUP_TRUNK-to-LAYER3_ABUJA_FIBER_SWITCH
+set interfaces ge-1/0/6 mtu 9192
+set interfaces ge-1/0/6 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC_Abuja
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC_VPN
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-ABJ-VILLA
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-HOMBORI
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-ABJ-VILLA-LAN
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members Management_VLAN
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members zenitmetro
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members all
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN9
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN1
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN2
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN3
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN4
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN5
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN6
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN7
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN8
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN10
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN11
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN13
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN14
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN15
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN16
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN17
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN18
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members AGIP-VPN12
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members HALL_7_INTERNET
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members PSI_NIGERIA
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members BRIDGE-ESTATE-LAN
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members BRIDGE-TEST
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members NIG-HEALTH-WATCH-INTERNET-WAN
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-IDU-INT
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members PRIVATE-Internet
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-DARK-FIBRE
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-SERVER1
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-SERVER2
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-SERVER3
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-SERVER4
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-KARU
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-MUKTAR-KARU
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members LAYER3_CLOUD_INTERNET
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members CLOUD_MIGRATIO_TEST
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members L3-EXTERNAL-FACING-APP-DMZ_CLOUD
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members Unified_LAN
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members LAYER3-RESOURCES-NETWORK
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC_PH_NETWORK
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC_IBADAN
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC_ENUGU
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-KANO
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members LAYER3-LAN-to-9MOBILE
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members CLOUD_EXSi_HOST_NETWORK
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC_KADUNA
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC_GOMBE
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC_MAIDUGURI
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members PHASE_3_VPS
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members Cloud_VI_Managment
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members INTEGRAL-SOLUTIONS
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members NASSCO
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members GIZ-ASOKORO
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members CLOUD_DEMO_ENVIRONMENT
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members ON-APP-KVM-WAN
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members WINROCK
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members WORLD_BANK_ANNEX
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members HAMU-LEGAL
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members EFCC-WUSE-INT
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members WORLBANK-MAITAMA
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members Songhai-Health
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members ACIOE-Associate
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members FHI360
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members John-Snow
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members GIZ-MOVE
+set interfaces ge-1/0/7 description LAYER3-SA-EXTERNAL-PORT
+set interfaces ge-1/0/7 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/7 unit 0 family ethernet-switching vlan members LAYER3-SSL-Internet
+set interfaces ge-1/0/8 description NASSCO-SSL-EXTERNAL
+set interfaces ge-1/0/8 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/8 unit 0 family ethernet-switching vlan members NASSCO-SSL-EXTERNAL
+set interfaces ge-1/0/9 description LINK-AIRTEL-to-LAYER3_ABUJA_ROUTER-WAN
+set interfaces ge-1/0/9 mtu 9192
+set interfaces ge-1/0/9 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/9 unit 0 family ethernet-switching vlan members AIRTEL-LH-VLAN3304
+set interfaces ge-1/0/10 description TRUNK-TO-3RD-FLOOR-SWITCH
+set interfaces ge-1/0/10 mtu 9192
+set interfaces ge-1/0/10 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members all
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members LAYER3-CCTV
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members SOLINA-HEALTH
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members RAYUWA-INT-LAN
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members CONTENT-OASIS-OFFICE
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members CONTENT-OASIS-EXT
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members WORLBANK-MAITAMA
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members EFCC_SOKOTO
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members TEST
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members TEST-1018
+set interfaces ge-1/0/11 description COONECTION-TO-SA-LAN
+set interfaces ge-1/0/11 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/11 unit 0 family ethernet-switching vlan members SA-LAN
+set interfaces ge-1/0/13 description PHASE3-LONGHAUL
+set interfaces ge-1/0/13 mtu 9192
+set interfaces ge-1/0/13 unit 0 family ethernet-switching vlan members PHASE3-LONGHAUL
+set interfaces ge-1/0/15 description LAYER3-SA-EXTERNAL-PORT
+set interfaces ge-1/0/15 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/15 unit 0 family ethernet-switching vlan members LAYER3-SSL-Internet
+set interfaces ge-1/0/17 unit 0 family ethernet-switching vlan members Management_VLAN
+set interfaces ae0 description AGGREGATED-CONNECTION-TO-CLOUDSWITCH-AE0
+set interfaces ae0 mtu 9192
+set interfaces ae0 aggregated-ether-options minimum-links 1
+set interfaces ae0 aggregated-ether-options link-speed 1g
+set interfaces ae0 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ae0 unit 0 family ethernet-switching vlan members all
+set interfaces ae0 unit 0 family ethernet-switching vlan members LAYER3-RESOURCES-NETWORK
+set interfaces ae0 unit 0 family ethernet-switching vlan members AIRTEL-LH-VLAN500
+set interfaces ae0 unit 0 family ethernet-switching vlan members JUNIPER-LAB-LAN
+set interfaces ae0 unit 0 family ethernet-switching vlan members AGIP-INTERNET-LAN
+set interfaces ae0 unit 0 family ethernet-switching vlan members ENTERPRISE-NSX
+set interfaces ae0 unit 0 family ethernet-switching vlan members ETISALAT-SIP-SERVICE
+set interfaces ae0 unit 0 family ethernet-switching vlan members SWIFT-NETWORK-UNITY-BANK
+set interfaces ae0 unit 0 family ethernet-switching vlan members SDWAN_TEST
+set interfaces ae0 unit 0 family ethernet-switching vlan members EXTERNAL-FACING-APP-DMZ
+set interfaces ae1 description AGGREGATED_TRUNK_TO_AIRTEl_POP
+set interfaces ae1 mtu 9192
+set interfaces ae1 aggregated-ether-options minimum-links 1
+set interfaces ae1 aggregated-ether-options link-speed 1g
+set interfaces ae1 aggregated-ether-options lacp active
+set interfaces ae1 aggregated-ether-options lacp periodic fast
+set interfaces ae1 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ae1 unit 0 family ethernet-switching vlan members all
+set interfaces ae1 unit 0 family ethernet-switching vlan members IS-RIVERS-HOUSE-CBD
+set interfaces ae1 unit 0 family ethernet-switching vlan members MCO-INT
+set interfaces ae1 unit 0 family ethernet-switching vlan members MINES-AND-STEEL
+set interfaces ae1 unit 0 family ethernet-switching vlan members AIRTEL_ELDORET
+set interfaces ae1 unit 0 family ethernet-switching vlan members ECOBANK
+set interfaces ae1 unit 0 family ethernet-switching vlan members EFCC_PH_NETWORK
+set interfaces ae1 unit 0 family ethernet-switching vlan members EFCC_IBADAN
+set interfaces ae1 unit 0 family ethernet-switching vlan members EFCC_ENUGU
+set interfaces ae1 unit 0 family ethernet-switching vlan members EFCC-KANO
+set interfaces ae1 unit 0 family ethernet-switching vlan members EFCC_KADUNA
+set interfaces ae1 unit 0 family ethernet-switching vlan members EFCC_GOMBE
+set interfaces ae1 unit 0 family ethernet-switching vlan members EFCC_MAIDUGURI
+set interfaces ae1 unit 0 family ethernet-switching vlan members PHASE_3_VPS
+set interfaces ae1 unit 0 family ethernet-switching vlan members ABJ-MED-IBGP
+set interfaces ae1 unit 0 family ethernet-switching vlan members IRIS-SMART-ENUGU
+set interfaces ae2 description AGGREGATED_TRUNK_TO_ROUTER
+set interfaces ae2 mtu 9192
+set interfaces ae2 aggregated-ether-options minimum-links 1
+set interfaces ae2 aggregated-ether-options link-speed 1g
+set interfaces ae2 aggregated-ether-options lacp active
+set interfaces ae2 aggregated-ether-options lacp periodic fast
+set interfaces ae2 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ae2 unit 0 family ethernet-switching vlan members TEST-1018
+set interfaces ae2 unit 0 family ethernet-switching vlan members HELLO-TRACTOR
+set interfaces ae2 unit 0 family ethernet-switching vlan members Dunamis
+set interfaces ae2 unit 0 family ethernet-switching vlan members EXARO_Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members IL0-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members Lagos_internet_clients
+set interfaces ae2 unit 0 family ethernet-switching vlan members Layer3Network
+set interfaces ae2 unit 0 family ethernet-switching vlan members Management_VLAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members NAF-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members NIROTECH-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members KSA_MEDICAL_CENTRE
+set interfaces ae2 unit 0 family ethernet-switching vlan members ICRC-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members PIND_STORAGE
+set interfaces ae2 unit 0 family ethernet-switching vlan members PIND_STORAGE_WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members SYNTELL-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members TEMP-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members TEMP-Internet2
+set interfaces ae2 unit 0 family ethernet-switching vlan members UAM-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members WHO2-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members YENTECH-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members MEDALLION-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members CHAN_CHARIS
+set interfaces ae2 unit 0 family ethernet-switching vlan members DPI-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members NAVY-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members ICSL_Abuja
+set interfaces ae2 unit 0 family ethernet-switching vlan members PRE-PAYGO_VR-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members RVI_INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members STERLINGBANK
+set interfaces ae2 unit 0 family ethernet-switching vlan members PRE-PAYGO2_VR-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members PASBBOXX
+set interfaces ae2 unit 0 family ethernet-switching vlan members BCN-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members PIND-GH-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members UBA
+set interfaces ae2 unit 0 family ethernet-switching vlan members zenit2
+set interfaces ae2 unit 0 family ethernet-switching vlan members MonacomWimax
+set interfaces ae2 unit 0 family ethernet-switching vlan members STERLING_BANK_WIMAX
+set interfaces ae2 unit 0 family ethernet-switching vlan members NEXIM-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members NATIONAL_ASSEMBLY
+set interfaces ae2 unit 0 family ethernet-switching vlan members UNDP-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-SSL-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members PRE-PAYGO3_VR-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members AGIP_MANAGEMENT
+set interfaces ae2 unit 0 family ethernet-switching vlan members ICSL-UNITYBANK-LH
+set interfaces ae2 unit 0 family ethernet-switching vlan members ARM-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members ECOBANK
+set interfaces ae2 unit 0 family ethernet-switching vlan members VSO-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-BREAKOUT-2
+set interfaces ae2 unit 0 family ethernet-switching vlan members POPULATION_COUNCIL
+set interfaces ae2 unit 0 family ethernet-switching vlan members AFRICA-DEV-BANK
+set interfaces ae2 unit 0 family ethernet-switching vlan members AGIP-VPN10
+set interfaces ae2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-USAID
+set interfaces ae2 unit 0 family ethernet-switching vlan members L3-TO-VRF
+set interfaces ae2 unit 0 family ethernet-switching vlan members PRIVATE_INTERNET-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members IBB-UNIVERISTY-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-OFFICE-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members GEOQINETIQ
+set interfaces ae2 unit 0 family ethernet-switching vlan members COAS
+set interfaces ae2 unit 0 family ethernet-switching vlan members EFCC_Abuja
+set interfaces ae2 unit 0 family ethernet-switching vlan members CENTRIFUGE
+set interfaces ae2 unit 0 family ethernet-switching vlan members EFCC-ABJ-VILLA
+set interfaces ae2 unit 0 family ethernet-switching vlan members NET-APP
+set interfaces ae2 unit 0 family ethernet-switching vlan members SV-ABUJA-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members WEB-INDICIES
+set interfaces ae2 unit 0 family ethernet-switching vlan members VIRTUAL-SA
+set interfaces ae2 unit 0 family ethernet-switching vlan members ON-APP-CONTROLLER
+set interfaces ae2 unit 0 family ethernet-switching vlan members JUNIPER-LAB-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members ABU-RESIDENCE
+set interfaces ae2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-PROPCOM
+set interfaces ae2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-OFFICE
+set interfaces ae2 unit 0 family ethernet-switching vlan members DEPT-OF-DEFENSE
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-PUBLIC-SIP
+set interfaces ae2 unit 0 family ethernet-switching vlan members UBA_VPN
+set interfaces ae2 unit 0 family ethernet-switching vlan members SOLINA-HEALTH
+set interfaces ae2 unit 0 family ethernet-switching vlan members HORIZON-INF-SERVICES
+set interfaces ae2 unit 0 family ethernet-switching vlan members ON-APP-KVM-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members PIND-SIP-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members EXARO_INTERNET2
+set interfaces ae2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-INDONESIA
+set interfaces ae2 unit 0 family ethernet-switching vlan members UNDP-UN-HOUSE
+set interfaces ae2 unit 0 family ethernet-switching vlan members ETACT_LIFECAMP_INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members IRIS-SMART-TOTAL-HOUSE
+set interfaces ae2 unit 0 family ethernet-switching vlan members OXFORD-POLICY-MANAGEMENT
+set interfaces ae2 unit 0 family ethernet-switching vlan members BRITISH-HIGH-COMMISSION
+set interfaces ae2 unit 0 family ethernet-switching vlan members COFFEY
+set interfaces ae2 unit 0 family ethernet-switching vlan members DIAMOND-BANK-VPN
+set interfaces ae2 unit 0 family ethernet-switching vlan members MILITARY-PENSIONS-BOARD
+set interfaces ae2 unit 0 family ethernet-switching vlan members HERITAGE-BANK-RESIDENCE
+set interfaces ae2 unit 0 family ethernet-switching vlan members EFCC-KARU
+set interfaces ae2 unit 0 family ethernet-switching vlan members VSO2
+set interfaces ae2 unit 0 family ethernet-switching vlan members MIN-OF-FINANCE
+set interfaces ae2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-RSD
+set interfaces ae2 unit 0 family ethernet-switching vlan members DBI-INTERNET-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members TEST-SAMSON
+set interfaces ae2 unit 0 family ethernet-switching vlan members DIAMOND-UAC-NASS
+set interfaces ae2 unit 0 family ethernet-switching vlan members PRIVATE-Internet
+set interfaces ae2 unit 0 family ethernet-switching vlan members WORLDBANK-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members Radial_Circle
+set interfaces ae2 unit 0 family ethernet-switching vlan members CIRCUMTECH-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members EFCC-HOMBORI
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC
+set interfaces ae2 unit 0 family ethernet-switching vlan members AIB_AIRPORT
+set interfaces ae2 unit 0 family ethernet-switching vlan members Gadzama
+set interfaces ae2 unit 0 family ethernet-switching vlan members WHO-ASOKORO-OLDCBN
+set interfaces ae2 unit 0 family ethernet-switching vlan members MAINEONE
+set interfaces ae2 unit 0 family ethernet-switching vlan members JOSEPH-NATHANIEL
+set interfaces ae2 unit 0 family ethernet-switching vlan members IPNX-GREECE_EMBASSY
+set interfaces ae2 unit 0 family ethernet-switching vlan members Sterling_longhaul
+set interfaces ae2 unit 0 family ethernet-switching vlan members UNDP-UN
+set interfaces ae2 unit 0 family ethernet-switching vlan members JAIZ-BANK
+set interfaces ae2 unit 0 family ethernet-switching vlan members WHO-AROCHUKWU-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members UNI-JOS-TEST-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members AFRICA-DEV-BANK-RADIO
+set interfaces ae2 unit 0 family ethernet-switching vlan members NAF_COAS-Guest-kado
+set interfaces ae2 unit 0 family ethernet-switching vlan members AGIP-INTERNET-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members AGIP-INTERNET-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members ETISALAT
+set interfaces ae2 unit 0 family ethernet-switching vlan members NAF-CAS-OFFICE
+set interfaces ae2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN1
+set interfaces ae2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN2
+set interfaces ae2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN3
+set interfaces ae2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN4
+set interfaces ae2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN5
+set interfaces ae2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN6
+set interfaces ae2 unit 0 family ethernet-switching vlan members ENTERPRISE-UNIJOS-LAN7
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-SECONDARY-DNS
+set interfaces ae2 unit 0 family ethernet-switching vlan members COAS-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members AsoSavings
+set interfaces ae2 unit 0 family ethernet-switching vlan members POPC_BREAKTHROUGH
+set interfaces ae2 unit 0 family ethernet-switching vlan members GAIN-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members NEXIM-ABJ-CAL
+set interfaces ae2 unit 0 family ethernet-switching vlan members JUNIPER-LAB-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members Ben
+set interfaces ae2 unit 0 family ethernet-switching vlan members zenitmetro
+set interfaces ae2 unit 0 family ethernet-switching vlan members NGNOG-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members IOM
+set interfaces ae2 unit 0 family ethernet-switching vlan members ASO-SAVINGS-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members HEALTH-FINANCE
+set interfaces ae2 unit 0 family ethernet-switching vlan members NCDC-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members ASO-SAVINGS-LH
+set interfaces ae2 unit 0 family ethernet-switching vlan members DBI-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members RAYUWA-INT-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members ABT-ASSOCIATES
+set interfaces ae2 unit 0 family ethernet-switching vlan members VENTURES-PLATFORMS
+set interfaces ae2 unit 0 family ethernet-switching vlan members AIRTEL-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members TEST
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-ABU-RESIDENCE-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members UMB-MGIC
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-KATAMPE
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-APO
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-VPN-WUSE2
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-VPN-AREA3
+set interfaces ae2 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL
+set interfaces ae2 unit 0 family ethernet-switching vlan members CEDARCREST-HOSPITAL-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-NSDC
+set interfaces ae2 unit 0 family ethernet-switching vlan members EFCC-IDU2
+set interfaces ae2 unit 0 family ethernet-switching vlan members ETISALAT-SIP-SERVICE
+set interfaces ae2 unit 0 family ethernet-switching vlan members ETISALAT-SIP2-SERVICE
+set interfaces ae2 unit 0 family ethernet-switching vlan members L3-AEDC-KANO
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-MINNA
+set interfaces ae2 unit 0 family ethernet-switching vlan members Sterling_Longhaul_DR
+set interfaces ae2 unit 0 family ethernet-switching vlan members AIRTEL-BUCHANA-CLOSE
+set interfaces ae2 unit 0 family ethernet-switching vlan members CIVIL-INNOVATION-LAB
+set interfaces ae2 unit 0 family ethernet-switching vlan members ADAMS-SMITH
+set interfaces ae2 unit 0 family ethernet-switching vlan members YOUTH-HUB-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members ICRC-IDU
+set interfaces ae2 unit 0 family ethernet-switching vlan members HERITAGE-BANK
+set interfaces ae2 unit 0 family ethernet-switching vlan members Unified_LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members ON-APP-CONTROLLER-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members MTN-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members ON-APP-TEMPORAL3900
+set interfaces ae2 unit 0 family ethernet-switching vlan members IOM-BUCHANAN-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members DIAMOND-ABUJA-LAGOS
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-LAFIA
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-KUBWA
+set interfaces ae2 unit 0 family ethernet-switching vlan members INTL-REP-INSTITUTE
+set interfaces ae2 unit 0 family ethernet-switching vlan members PANAMA-SERVER
+set interfaces ae2 unit 0 family ethernet-switching vlan members GEEKHUB-NINAS
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-SULEJA
+set interfaces ae2 unit 0 family ethernet-switching vlan members CIA-TEST
+set interfaces ae2 unit 0 family ethernet-switching vlan members FLUENT-SERVICE
+set interfaces ae2 unit 0 family ethernet-switching vlan members VCD-EXTERNAL-NETWORK
+set interfaces ae2 unit 0 family ethernet-switching vlan members IMF-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members UNICEF-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members ENTERPRISE-NSX
+set interfaces ae2 unit 0 family ethernet-switching vlan members IRIS-SMART-IMM
+set interfaces ae2 unit 0 family ethernet-switching vlan members CREATIVE_ASSOCIATE_INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members AEDC-VPN2
+set interfaces ae2 unit 0 family ethernet-switching vlan members NCDC-GADUWA
+set interfaces ae2 unit 0 family ethernet-switching vlan members PARTNERS-WEST-AFRICA
+set interfaces ae2 unit 0 family ethernet-switching vlan members CCCRN-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members IOM-ABUJA-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members IOM-CALABAR-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members UMB-MAGIC-WUSE2-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members IOM-KANO-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members NIZAMIYE-HOSPITAL
+set interfaces ae2 unit 0 family ethernet-switching vlan members NBS-INTERNET-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members MCO-INT
+set interfaces ae2 unit 0 family ethernet-switching vlan members NASSCO-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members NASSCO-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members MINES-AND-STEEL
+set interfaces ae2 unit 0 family ethernet-switching vlan members HJFMRI_DRL_ASO
+set interfaces ae2 unit 0 family ethernet-switching vlan members SWIFT-NETWORK-UNITY-BANK
+set interfaces ae2 unit 0 family ethernet-switching vlan members CNFA-DANUBE-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members E-HEALTH4EVERYONE-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members NASSCO-SSL-EXTERNAL
+set interfaces ae2 unit 0 family ethernet-switching vlan members KAUFMAN_GLOBAL_LONGHAUL
+set interfaces ae2 unit 0 family ethernet-switching vlan members SDWAN_TEST
+set interfaces ae2 unit 0 family ethernet-switching vlan members CREATIVE_ASSOCIATE_MAITAMA
+set interfaces ae2 unit 0 family ethernet-switching vlan members OANDO
+set interfaces ae2 unit 0 family ethernet-switching vlan members CONTENT-OASIS-EXT
+set interfaces ae2 unit 0 family ethernet-switching vlan members ECOBANK_LH
+set interfaces ae2 unit 0 family ethernet-switching vlan members WHO-UN-HOUSE
+set interfaces ae2 unit 0 family ethernet-switching vlan members HALL_7_INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members ADAM_SMITH_OGUN
+set interfaces ae2 unit 0 family ethernet-switching vlan members AQUA-CONSULT
+set interfaces ae2 unit 0 family ethernet-switching vlan members WIOCC-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members NFIU-WUSEII
+set interfaces ae2 unit 0 family ethernet-switching vlan members HALL7-INTERNET-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members GEORGES-RESIDENCE-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members GEORGES-RESIDENCE-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members TEST2
+set interfaces ae2 unit 0 family ethernet-switching vlan members PSI_NIGERIA
+set interfaces ae2 unit 0 family ethernet-switching vlan members TEST1
+set interfaces ae2 unit 0 family ethernet-switching vlan members BRIDGE-ESTATE-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members BRIDGE-ESTATE-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members BRIDGE-TEST
+set interfaces ae2 unit 0 family ethernet-switching vlan members UBEC-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members UBEC_INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members NIG-HEALTH-WATCH-INTERNET-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members EFCC-IDU-INT
+set interfaces ae2 unit 0 family ethernet-switching vlan members EFCC-MUKTAR-KARU
+set interfaces ae2 unit 0 family ethernet-switching vlan members IRIS-SMART-MAITAMA
+set interfaces ae2 unit 0 family ethernet-switching vlan members WORKS-AND-CONNECT
+set interfaces ae2 unit 0 family ethernet-switching vlan members IPTELECOM-NET
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3_CLOUD_INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members UNICEF-AKURE
+set interfaces ae2 unit 0 family ethernet-switching vlan members CLOUD_EXSi_HOST_NETWORK
+set interfaces ae2 unit 0 family ethernet-switching vlan members GMIKE_INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members GT_BANK_LH
+set interfaces ae2 unit 0 family ethernet-switching vlan members TANGERINE-LIFE
+set interfaces ae2 unit 0 family ethernet-switching vlan members RAYUWA-INT-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members NCC-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members Cloud_VI_Managment
+set interfaces ae2 unit 0 family ethernet-switching vlan members INTEGRAL-SOLUTIONS
+set interfaces ae2 unit 0 family ethernet-switching vlan members FTTH-LAB
+set interfaces ae2 unit 0 family ethernet-switching vlan members NASSCO
+set interfaces ae2 unit 0 family ethernet-switching vlan members GIZ-ASOKORO
+set interfaces ae2 unit 0 family ethernet-switching vlan members CLOUD_DEMO_ENVIRONMENT
+set interfaces ae2 unit 0 family ethernet-switching vlan members WINROCK
+set interfaces ae2 unit 0 family ethernet-switching vlan members AIB-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members UNICEF-KANO
+set interfaces ae2 unit 0 family ethernet-switching vlan members IOM-SAUKA
+set interfaces ae2 unit 0 family ethernet-switching vlan members IRIS-SMART-SAUKA
+set interfaces ae2 unit 0 family ethernet-switching vlan members IPTELECOMS-SAUKA
+set interfaces ae2 unit 0 family ethernet-switching vlan members WORLD_BANK_ANNEX
+set interfaces ae2 unit 0 family ethernet-switching vlan members HAMU-LEGAL
+set interfaces ae2 unit 0 family ethernet-switching vlan members EFCC-WUSE-INT
+set interfaces ae2 unit 0 family ethernet-switching vlan members WORLBANK-MAITAMA
+set interfaces ae2 unit 0 family ethernet-switching vlan members FTTH-LAB2
+set interfaces ae2 unit 0 family ethernet-switching vlan members ZENITH-DMD-OFFICE-INTERNET-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members ZENITH-ED-OFFICE-INTERNET-WAN-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members ZENITH-ED-OFFICE-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members ZENITH-DMD-OFFICE-INTERNET-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members UNIFI-CONTROLLER
+set interfaces ae2 unit 0 family ethernet-switching vlan members MTN-FUHSO
+set interfaces ae2 unit 0 family ethernet-switching vlan members AFRICAN-FIRST-LADY-PEACE-MISSION
+set interfaces ae2 unit 0 family ethernet-switching vlan members VERSE-CONSULTING-AND-IT
+set interfaces ae2 unit 0 family ethernet-switching vlan members NETHERLAND-EMBASSY
+set interfaces ae2 unit 0 family ethernet-switching vlan members ITALLIAN-EMBASSY
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-BREAKOUT-3
+set interfaces ae2 unit 0 family ethernet-switching vlan members MONITOR-INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members SACB-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members SACB-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-WEBSITE-WAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members LAYER3-WEBSITE-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members Songhai-Health
+set interfaces ae2 unit 0 family ethernet-switching vlan members FHI360
+set interfaces ae2 unit 0 family ethernet-switching vlan members ACIOE-Associate
+set interfaces ae2 unit 0 family ethernet-switching vlan members John-Snow
+set interfaces ae2 unit 0 family ethernet-switching vlan members FHI-ECOWAS
+set interfaces ae2 unit 0 family ethernet-switching vlan members VCIT-CHURCHGATE-4
+set interfaces ae2 unit 0 family ethernet-switching vlan members VCIT-CHURCHGATE-1
+set interfaces ae2 unit 0 family ethernet-switching vlan members VCIT-CHURCHGATE-2
+set interfaces ae2 unit 0 family ethernet-switching vlan members EMERGING-AFRICA-GROUP-ZONE3
+set interfaces ae2 unit 0 family ethernet-switching vlan members TEST-VLAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members NIG-HEALTH-WATCH-INTERNET-LAN
+set interfaces ae2 unit 0 family ethernet-switching vlan members VCIT-JABI
+set interfaces ae2 unit 0 family ethernet-switching vlan members IFES
+set interfaces ae2 unit 0 family ethernet-switching vlan members IRIS-SMART-ENUGU
+set interfaces ae2 unit 0 family ethernet-switching vlan members TENDER-YEAR
+set interfaces ae2 unit 0 family ethernet-switching vlan members GOODLUCK-FOUNDATION
+set interfaces ae2 unit 0 family ethernet-switching vlan members SD1-POC1
+set interfaces ae2 unit 0 family ethernet-switching vlan members SD1-POC2
+set interfaces ae2 unit 0 family ethernet-switching vlan members SD1-POC3
+set interfaces ae2 unit 0 family ethernet-switching vlan members SD1-POC4
+set interfaces ae2 unit 0 family ethernet-switching vlan members GIZ-MOVE
+set interfaces ae2 unit 0 family ethernet-switching vlan members CLINICAL_RESEARCH_CENTRE_INTERNET
+set interfaces ae2 unit 0 family ethernet-switching vlan members NPSCMP
+set interfaces em0 unit 0 family inet
+set interfaces em1 unit 0 family inet address 10.200.200.1/30
+set interfaces irb unit 0 family inet dhcp vendor-id Juniper-ex4600-40f-TC3720220536
+set interfaces irb unit 22 family inet address 172.20.20.1/24
+set interfaces irb unit 38 family inet address 15.15.20.2/29
+set interfaces irb unit 45 family inet address 10.189.1.1/29
+set interfaces irb unit 109 family inet address 172.29.0.240/16
+set interfaces irb unit 201 family inet address 172.17.15.49/24
+set interfaces irb unit 202 family inet address 172.17.17.37/24
+set interfaces irb unit 204 family inet address 10.190.1.3/29
+set interfaces irb unit 223 family inet
+set interfaces irb unit 250 family inet address 10.199.0.254/24
+set interfaces irb unit 253 family inet address 192.168.16.2/23
+set interfaces irb unit 333 family inet
+set interfaces irb unit 376 family inet address 192.168.4.2/24
+set interfaces irb unit 390 family inet address 172.23.24.1/24
+set interfaces irb unit 399 family inet address 10.10.200.2/24
+set interfaces irb unit 409 family inet address 10.7.1.2/24
+set interfaces irb unit 466 family inet address 172.12.1.3/24
+set interfaces irb unit 489 family inet address 172.20.16.3/29
+set interfaces irb unit 509 family inet address 10.10.10.4/24
+set interfaces irb unit 509 family inet address 10.10.10.10/24
+set interfaces irb unit 520 family inet address 192.168.100.20/24
+set interfaces irb unit 569 family inet
+set interfaces irb unit 612 family inet address 192.168.30.2/24
+set interfaces irb unit 620 family inet
+set interfaces irb unit 698 family inet
+set interfaces irb unit 792 family inet address 192.168.66.4/29
+set interfaces irb unit 798
+set interfaces irb unit 860 family inet address 16.16.16.1/30
+set interfaces irb unit 874 family inet address 10.14.2.2/24
+set interfaces irb unit 882 family inet
+set interfaces irb unit 889 family inet address 10.15.16.4/29
+set interfaces irb unit 892 family inet address 10.14.1.2/24
+set interfaces irb unit 893 family inet address 172.17.18.5/29
+set interfaces irb unit 895 family inet address 142.142.142.244/24
+set interfaces irb unit 895 family inet address 10.11.12.4/29
+set interfaces irb unit 898 family inet address 200.200.200.1/29
+set interfaces irb unit 901 family inet address 192.168.7.2/24
+set interfaces irb unit 902 family inet address 192.168.15.2/24
+set interfaces irb unit 903 family inet
+set interfaces irb unit 905 family inet
+set interfaces irb unit 906 family inet
+set interfaces irb unit 912 family inet
+set interfaces irb unit 915 family inet address 10.170.0.2/24
+set interfaces irb unit 921 family inet address 10.10.12.2/24
+set interfaces irb unit 922 family inet
+set interfaces irb unit 932 family inet
+set interfaces irb unit 958 family inet
+set interfaces irb unit 981 family inet address 10.192.0.2/24
+set interfaces irb unit 989 family inet address 21.24.26.1/30
+set interfaces irb unit 2016 family inet
+set interfaces irb unit 2103 family inet
+set interfaces irb unit 2155 family inet address 10.10.11.2/24
+set interfaces irb unit 2198 family inet address 15.15.15.1/29
+set interfaces irb unit 3304 family inet address 16.16.16.2/29
+set interfaces irb unit 3850 family inet
+set interfaces irb unit 3909 family inet address 172.16.4.3/29
+set interfaces irb unit 3923 family inet
+set interfaces lo0 unit 0 family inet filter input MANAGEMENT-CONTROL
+set interfaces lo0 unit 0 family inet address 10.199.10.254/32
+set interfaces me0 unit 0 family inet
+set interfaces vlan unit 0 family inet
+set interfaces vme unit 0 family inet dhcp vendor-id Juniper-ex4600-40f-TC3720220536
+set snmp name LAYER3_ABUJA_IGI_SWITCH
+set snmp description LAYER3_ABUJA_IGI_SWITCH
+set snmp location LAYER3-IGI-5th-FLOOR
+set snmp contact "support@layer3.com.ng"
+set snmp engine-id use-mac-address
+set snmp community private authorization read-only
+set snmp community public authorization read-only
+set snmp community public clients 0.0.0.0/0 restrict
+set snmp community public clients 10.199.0.1/32
+set snmp community public clients 10.199.0.8/32
+set snmp community public clients 10.73.73.150/32
+set snmp community public clients 10.199.0.6/32
+set snmp community public clients 10.199.0.251/32
+set snmp community public clients 10.199.0.201/32
+set snmp community public clients 10.199.0.202/32
+set snmp community public clients 10.199.0.199/32
+set snmp community public clients 172.17.17.225/32
+set snmp community public clients 172.17.17.224/32
+set snmp community public clients 10.73.73.151/32
+set snmp community Layer3 authorization read-only
+set snmp trap-options
+set snmp trap-group data version v2
+set snmp trap-group data categories authentication
+set snmp trap-group data categories chassis
+set snmp trap-group data categories link
+set snmp trap-group data categories remote-operations
+set snmp trap-group data categories routing
+set snmp trap-group data categories startup
+set snmp trap-group data categories rmon-alarm
+set snmp trap-group data categories vrrp-events
+set snmp trap-group data categories configuration
+set snmp trap-group data categories services
+set snmp trap-group data targets 10.199.0.1
+set snmp trap-group data targets 10.199.0.251
+set snmp trap-group data targets 10.199.0.199
+set snmp trap-group data targets 172.17.17.225
+set snmp trap-group data targets 172.17.17.224
+set snmp trap-group report categories link
+set snmp trap-group report targets 10.199.0.1
+set snmp trap-group report targets 10.199.0.251
+set snmp trap-group report targets 10.199.0.201
+set snmp trap-group report targets 10.199.0.202
+set snmp trap-group report targets 172.17.17.225
+set snmp trap-group report targets 172.17.17.224
+set snmp trap-group Data version all
+set snmp trap-group Data categories authentication
+set snmp trap-group Data categories chassis
+set snmp trap-group Data categories link
+set snmp trap-group Data categories remote-operations
+set snmp trap-group Data categories routing
+set snmp trap-group Data categories startup
+set snmp trap-group Data categories rmon-alarm
+set snmp trap-group Data categories vrrp-events
+set snmp trap-group Data categories configuration
+set snmp trap-group Data categories services
+set snmp trap-group Data targets 172.17.17.224
+set snmp trap-group space version v2
+set snmp trap-group space targets 10.73.73.150
+set snmp logical-system-trap-filter
+set snmp health-monitor
+set forwarding-options storm-control-profiles default all
+set firewall family inet filter FFROM-ZAIN-POP term 1 from source-address 10.199.0.106/32
+set firewall family inet filter FFROM-ZAIN-POP term 1 from destination-address 10.199.0.254/32
+set firewall family inet filter FFROM-ZAIN-POP term 1 from destination-address 10.199.0.94/32
+set firewall family inet filter FFROM-ZAIN-POP term 1 from protocol icmp
+set firewall family inet filter FFROM-ZAIN-POP term 1 then count CommingFrom-Zain-POP
+set firewall family inet filter FFROM-ZAIN-POP term 1 then accept
+set firewall family inet filter FFROM-ZAIN-POP term 2 then accept
+set firewall family inet filter MANAGEMENT-CONTROL term 1 from source-address 10.199.0.0/24
+set firewall family inet filter MANAGEMENT-CONTROL term 1 from source-address 10.73.73.0/24
+set firewall family inet filter MANAGEMENT-CONTROL term 1 from source-address 172.17.17.224/32
+set firewall family inet filter MANAGEMENT-CONTROL term 1 from destination-address 172.17.17.93/32
+set firewall family inet filter MANAGEMENT-CONTROL term 1 from destination-address 10.199.0.254/32
+set firewall family inet filter MANAGEMENT-CONTROL term 1 from protocol tcp
+set firewall family inet filter MANAGEMENT-CONTROL term 1 from destination-port ssh
+set firewall family inet filter MANAGEMENT-CONTROL term 1 from destination-port telnet
+set firewall family inet filter MANAGEMENT-CONTROL term 1 then accept
+set firewall family inet filter MANAGEMENT-CONTROL term 2 from source-address 10.199.0.93/32
+set firewall family inet filter MANAGEMENT-CONTROL term 2 from destination-address 10.199.0.254/32
+set firewall family inet filter MANAGEMENT-CONTROL term 2 from protocol udp
+set firewall family inet filter MANAGEMENT-CONTROL term 2 from destination-port ntp
+set firewall family inet filter MANAGEMENT-CONTROL term 2 then accept
+set firewall family inet filter MANAGEMENT-CONTROL term 3 from source-address 0.0.0.0/0
+set firewall family inet filter MANAGEMENT-CONTROL term 3 from destination-address 0.0.0.0/0
+set firewall family inet filter MANAGEMENT-CONTROL term 3 from protocol tcp
+set firewall family inet filter MANAGEMENT-CONTROL term 3 from protocol udp
+set firewall family inet filter MANAGEMENT-CONTROL term 3 from destination-port ssh
+set firewall family inet filter MANAGEMENT-CONTROL term 3 from destination-port telnet
+set firewall family inet filter MANAGEMENT-CONTROL term 3 from destination-port ntp
+set firewall family inet filter MANAGEMENT-CONTROL term 3 then discard
+set firewall family inet filter MANAGEMENT-CONTROL term 4 from source-address 0.0.0.0/0
+set firewall family inet filter MANAGEMENT-CONTROL term 4 then accept
+set firewall family inet filter TO-ZAIN-POP term 1 from source-address 10.199.0.94/32
+set firewall family inet filter TO-ZAIN-POP term 1 from destination-address 10.199.0.106/32
+set firewall family inet filter TO-ZAIN-POP term 1 from protocol icmp
+set firewall family inet filter TO-ZAIN-POP term 1 then count GoingTo-Zain-POP
+set firewall family inet filter TO-ZAIN-POP term 1 then accept
+set firewall family inet filter TO-ZAIN-POP term 2 then accept
+set firewall policer 512kbps if-exceeding bandwidth-limit 512k
+set firewall policer 512kbps if-exceeding burst-size-limit 64k
+set firewall policer 512kbps then discard
+set access address-assignment pool DHCP_DATA family inet network 172.17.15.0/24
+set access address-assignment pool DHCP_DATA family inet range DCHP_Range low 172.17.15.50
+set access address-assignment pool DHCP_DATA family inet range DCHP_Range high 172.17.15.254
+set access address-assignment pool DHCP_DATA family inet dhcp-attributes name-server 172.17.15.15
+set access address-assignment pool DHCP_DATA family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool DHCP_DATA family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool DHCP_DATA family inet dhcp-attributes router 172.17.15.1
+set access address-assignment pool DHCP_PRI_INT family inet network 172.20.20.0/24
+set access address-assignment pool DHCP_PRI_INT family inet range DCHP_Range low 172.20.20.10
+set access address-assignment pool DHCP_PRI_INT family inet range DCHP_Range high 172.20.20.254
+set access address-assignment pool DHCP_PRI_INT family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool DHCP_PRI_INT family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool DHCP_PRI_INT family inet dhcp-attributes router 172.20.20.254
+set access address-assignment pool DHCP_IHMS family inet network 192.168.7.0/24
+set access address-assignment pool DHCP_IHMS family inet range DCHP_Range low 192.168.7.10
+set access address-assignment pool DHCP_IHMS family inet range DCHP_Range high 192.168.7.254
+set access address-assignment pool DHCP_IHMS family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool DHCP_IHMS family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool DHCP_IHMS family inet dhcp-attributes router 192.168.7.1
+set access address-assignment pool DHCP_UBEC family inet network 192.168.30.0/24
+set access address-assignment pool DHCP_UBEC family inet range DCHP_Range low 192.168.30.10
+set access address-assignment pool DHCP_UBEC family inet range DCHP_Range high 192.168.30.254
+set access address-assignment pool DHCP_UBEC family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool DHCP_UBEC family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool DHCP_UBEC family inet dhcp-attributes router 192.168.30.1
+set access address-assignment pool ZENITH-OFFICE1 family inet network 10.14.1.0/24
+set access address-assignment pool ZENITH-OFFICE1 family inet range DCHP_Range low 10.14.1.10
+set access address-assignment pool ZENITH-OFFICE1 family inet range DCHP_Range high 10.14.1.254
+set access address-assignment pool ZENITH-OFFICE1 family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool ZENITH-OFFICE1 family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool ZENITH-OFFICE1 family inet dhcp-attributes router 10.14.1.1
+set access address-assignment pool ZENITH-OFFICE2 family inet network 10.14.2.0/24
+set access address-assignment pool ZENITH-OFFICE2 family inet range DCHP_Range low 10.14.2.10
+set access address-assignment pool ZENITH-OFFICE2 family inet range DCHP_Range high 10.14.2.254
+set access address-assignment pool ZENITH-OFFICE2 family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool ZENITH-OFFICE2 family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool ZENITH-OFFICE2 family inet dhcp-attributes router 10.14.2.1
+set access address-assignment pool SABC-DHCP family inet network 10.192.0.0/24
+set access address-assignment pool SABC-DHCP family inet range DCHP_Range low 10.192.0.10
+set access address-assignment pool SABC-DHCP family inet range DCHP_Range high 10.192.0.254
+set access address-assignment pool SABC-DHCP family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool SABC-DHCP family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool SABC-DHCP family inet dhcp-attributes router 10.192.0.1
+set access address-assignment pool DHCP_RAYUWA family inet network 192.168.15.0/24
+set access address-assignment pool DHCP_RAYUWA family inet range DCHP_Range low 192.168.15.50
+set access address-assignment pool DHCP_RAYUWA family inet range DCHP_Range high 192.168.15.254
+set access address-assignment pool DHCP_RAYUWA family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool DHCP_RAYUWA family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool DHCP_RAYUWA family inet dhcp-attributes router 192.168.15.1
+set access address-assignment pool NIG-HEALTH-WATCH family inet network 10.7.1.0/24
+set access address-assignment pool NIG-HEALTH-WATCH family inet range DCHP_Range low 10.7.1.10
+set access address-assignment pool NIG-HEALTH-WATCH family inet range DCHP_Range high 10.7.1.254
+set access address-assignment pool NIG-HEALTH-WATCH family inet dhcp-attributes name-server 41.217.204.165
+set access address-assignment pool NIG-HEALTH-WATCH family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool NIG-HEALTH-WATCH family inet dhcp-attributes router 10.7.1.1
+set routing-options static route 10.73.73.0/24 next-hop 10.199.0.39
+set routing-options static route 0.0.0.0/0 next-hop 10.199.0.39
+set protocols lldp interface all
+set protocols lldp-med interface all
+set protocols igmp-snooping vlan default
+set protocols igmp-snooping vlan all
+set protocols rstp interface all
+set vlans ABJ-MED-IBGP vlan-id 680
+set vlans ABT-ASSOCIATES vlan-id 2155
+set vlans ABT-ASSOCIATES l3-interface irb.2155
+set vlans ABU-RESIDENCE vlan-id 886
+set vlans ACIOE-Associate vlan-id 717
+set vlans ADAMS-SMITH vlan-id 893
+set vlans ADAMS-SMITH l3-interface irb.893
+set vlans ADAM_SMITH_OGUN vlan-id 4051
+set vlans AEDC vlan-id 801
+set vlans AEDC-APO vlan-id 3832
+set vlans AEDC-ASOKORO-VPN vlan-id 2518
+set vlans AEDC-IDAH vlan-id 2168
+set vlans AEDC-KATAMPE vlan-id 3833
+set vlans AEDC-KUBWA vlan-id 1640
+set vlans AEDC-LAFIA vlan-id 3011
+set vlans AEDC-LOKOJA vlan-id 2190
+set vlans AEDC-MINNA vlan-id 1573
+set vlans AEDC-SULEJA vlan-id 3590
+set vlans AEDC-VPN vlan-id 2523
+set vlans AEDC-VPN-AREA3 vlan-id 2519
+set vlans AEDC-VPN-WUSE2 vlan-id 2516
+set vlans AEDC-VPN2 vlan-id 2517
+set vlans AFRICA-DEV-BANK vlan-id 859
+set vlans AFRICA-DEV-BANK-RADIO vlan-id 926
+set vlans AFRICAN-FIRST-LADY-PEACE-MISSION vlan-id 946
+set vlans AGIP-INTERNET-LAN vlan-id 932
+set vlans AGIP-INTERNET-LAN l3-interface irb.932
+set vlans AGIP-INTERNET-WAN vlan-id 933
+set vlans AGIP-VPN1 vlan-id 88
+set vlans AGIP-VPN10 vlan-id 97
+set vlans AGIP-VPN11 vlan-id 98
+set vlans AGIP-VPN12 vlan-id 2
+set vlans AGIP-VPN13 vlan-id 4
+set vlans AGIP-VPN14 vlan-id 6
+set vlans AGIP-VPN15 vlan-id 8
+set vlans AGIP-VPN16 vlan-id 10
+set vlans AGIP-VPN17 vlan-id 16
+set vlans AGIP-VPN18 vlan-id 18
+set vlans AGIP-VPN2 vlan-id 89
+set vlans AGIP-VPN3 vlan-id 90
+set vlans AGIP-VPN4 vlan-id 91
+set vlans AGIP-VPN5 vlan-id 92
+set vlans AGIP-VPN6 vlan-id 93
+set vlans AGIP-VPN7 vlan-id 94
+set vlans AGIP-VPN8 vlan-id 95
+set vlans AGIP-VPN9 vlan-id 96
+set vlans AGIP_MANAGEMENT vlan-id 101
+set vlans AIB-INTERNET vlan-id 863
+set vlans AIB_AIRPORT vlan-id 908
+set vlans AIB_AIRPORT interface ae0.908
+set vlans AIB_AIRPORT interface ae1.908
+set vlans AIB_AIRPORT interface ge-0/0/10.908
+set vlans AIB_AIRPORT interface ge-0/0/6.908
+set vlans AIB_AIRPORT interface ge-1/0/6.908
+set vlans AIB_AIRPORT interface ge-0/0/3.908
+set vlans AIB_AIRPORT interface ge-0/0/2.908
+set vlans AIRTEL-BUCHANA-CLOSE vlan-id 2156
+set vlans AIRTEL-DANUBE vlan-id 2154
+set vlans AIRTEL-INTERNET vlan-id 3850
+set vlans AIRTEL-LH-VLAN3304 vlan-id 3304
+set vlans AIRTEL-LH-VLAN3304 l3-interface irb.3304
+set vlans AIRTEL-LH-VLAN500 vlan-id 500
+set vlans AIRTEL-LH-VLAN500-2 vlan-id 501
+set vlans AIRTEL-LONG_HAUL vlan-id 2160
+set vlans AIRTEL-NUEL-OJEI vlan-id 2195
+set vlans AIRTEL_ELDORET vlan-id 2104
+set vlans AQUA-CONSULT vlan-id 944
+set vlans ARM-INTERNET vlan-id 853
+set vlans ARM-LONGHAUL vlan-id 225
+set vlans ASO-SAVINGS-INTERNET vlan-id 392
+set vlans ASO-SAVINGS-LH vlan-id 489
+set vlans ASO-SAVINGS-LH l3-interface irb.489
+set vlans AsoSavings description "Aso Metro"
+set vlans AsoSavings vlan-id 490
+set vlans AsoSavings interface ae0.490
+set vlans AsoSavings interface ae1.490
+set vlans AsoSavings interface ge-0/0/10.490
+set vlans AsoSavings interface ge-0/0/6.490
+set vlans AsoSavings interface ge-1/0/6.490
+set vlans AsoSavings interface ge-0/0/3.490
+set vlans AsoSavings interface ge-0/0/2.490
+set vlans BANDWIDTH-TEST vlan-id 1010
+set vlans BBC vlan-id 603
+set vlans BBC interface ae0.603
+set vlans BBC interface ae1.603
+set vlans BBC interface ge-0/0/10.603
+set vlans BBC interface ge-0/0/6.603
+set vlans BBC interface ge-1/0/6.603
+set vlans BBC interface ge-0/0/3.603
+set vlans BBC interface ge-0/0/2.603
+set vlans BCN-Internet vlan-id 842
+set vlans BEN-JOHN-TEST vlan-id 989
+set vlans BEN-JOHN-TEST l3-interface irb.989
+set vlans BRIDGE-ESTATE-LAN vlan-id 253
+set vlans BRIDGE-ESTATE-LAN l3-interface irb.253
+set vlans BRIDGE-ESTATE-WAN vlan-id 254
+set vlans BRIDGE-TEST vlan-id 256
+set vlans BRITISH-HIGH-COMMISSION vlan-id 890
+set vlans Ben vlan-id 950
+set vlans CCCRN-INTERNET vlan-id 923
+set vlans CEDARCREST-HOSPITAL vlan-id 2198
+set vlans CEDARCREST-HOSPITAL l3-interface irb.2198
+set vlans CEDARCREST-HOSPITAL-INTERNET vlan-id 2197
+set vlans CENTRIFUGE vlan-id 872
+set vlans CHAN_CHARIS vlan-id 840
+set vlans CIA-TEST vlan-id 3800
+set vlans CIRCUMTECH-INTERNET vlan-id 862
+set vlans CIVIL-INNOVATION-LAB vlan-id 800
+set vlans CLINICAL_RESEARCH_CENTRE_INTERNET vlan-id 919
+set vlans CLOUD_DEMO_ENVIRONMENT vlan-id 1612
+set vlans CLOUD_EXSi_HOST_NETWORK vlan-id 1610
+set vlans CLOUD_MIGRATIO_TEST vlan-id 388
+set vlans CNFA-DANUBE-INTERNET vlan-id 760
+set vlans COAS vlan-id 871
+set vlans COAS-LAN vlan-id 873
+set vlans COFFEY vlan-id 891
+set vlans CONTENT-OASIS-EXT vlan-id 799
+set vlans CONTENT-OASIS-INDONESIA vlan-id 835
+set vlans CONTENT-OASIS-OFFICE vlan-id 887
+set vlans CONTENT-OASIS-PROPCOM description CONTENT-OASIS-PROPCOM-internet
+set vlans CONTENT-OASIS-PROPCOM vlan-id 833
+set vlans CONTENT-OASIS-RSD vlan-id 907
+set vlans CONTENT-OASIS-USAID vlan-id 861
+set vlans CREATIVE_ASSOCIATE_INTERNET vlan-id 450
+set vlans CREATIVE_ASSOCIATE_MAITAMA vlan-id 509
+set vlans CREATIVE_ASSOCIATE_MAITAMA l3-interface irb.509
+set vlans CVC-MEDALLION vlan-id 876
+set vlans Cloud_VI_Managment vlan-id 46
+set vlans DBI-INTERNET vlan-id 910
+set vlans DBI-INTERNET l3-interface irb.915
+set vlans DBI-INTERNET-LAN vlan-id 915
+set vlans DEPT-OF-DEFENSE vlan-id 888
+set vlans DEVICE-MANAGEMENT vlan-id 1007
+set vlans DIAMOND-ABUJA-LAGOS vlan-id 895
+set vlans DIAMOND-BANK-VPN vlan-id 903
+set vlans DIAMOND-BANK-VPN interface ae0.903
+set vlans DIAMOND-BANK-VPN interface ae1.903
+set vlans DIAMOND-BANK-VPN interface ge-0/0/10.903
+set vlans DIAMOND-BANK-VPN interface ge-0/0/6.903
+set vlans DIAMOND-BANK-VPN interface ge-1/0/6.903
+set vlans DIAMOND-BANK-VPN interface ge-0/0/3.903
+set vlans DIAMOND-BANK-VPN interface ge-0/0/2.903
+set vlans DIAMOND-UAC-NASS vlan-id 913
+set vlans DIAMOND-ZONE4-LAGOS vlan-id 877
+set vlans DPI-Internet vlan-id 838
+set vlans Dunamis description ConnectionToDunamis
+set vlans Dunamis vlan-id 822
+set vlans E-HEALTH4EVERYONE-INTERNET vlan-id 540
+set vlans ECI vlan-id 80
+set vlans ECOBANK description "ecobanks vlan"
+set vlans ECOBANK vlan-id 223
+set vlans ECOBANK l3-interface irb.223
+set vlans ECOBANK_LH vlan-id 3923
+set vlans ECOBANK_LH interface ae0.3923
+set vlans ECOBANK_LH interface ae1.3923
+set vlans ECOBANK_LH interface ge-0/0/10.3923
+set vlans ECOBANK_LH interface ge-0/0/6.3923
+set vlans ECOBANK_LH interface ge-1/0/6.3923
+set vlans ECOBANK_LH interface ge-0/0/3.3923
+set vlans ECOBANK_LH interface ge-0/0/2.3923
+set vlans ECOBANK_LH interface ge-0/0/18.3923
+set vlans ECOBANK_LH l3-interface irb.3923
+set vlans EFCC-ABJ-VILLA vlan-id 857
+set vlans EFCC-ABJ-VILLA-LAN vlan-id 954
+set vlans EFCC-DARK-FIBRE vlan-id 952
+set vlans EFCC-HOMBORI vlan-id 918
+set vlans EFCC-IDU-INT vlan-id 967
+set vlans EFCC-IDU2 vlan-id 3500
+set vlans EFCC-KANO vlan-id 2016
+set vlans EFCC-KANO l3-interface irb.2016
+set vlans EFCC-KARU vlan-id 2152
+set vlans EFCC-MUKTAR-KARU vlan-id 2150
+set vlans EFCC-SERVER1 vlan-id 1110
+set vlans EFCC-SERVER2 vlan-id 1120
+set vlans EFCC-SERVER3 vlan-id 1125
+set vlans EFCC-SERVER4 vlan-id 1126
+set vlans EFCC-SERVER5 vlan-id 1127
+set vlans EFCC-WUSE-INT vlan-id 966
+set vlans EFCC_Abuja vlan-id 803
+set vlans EFCC_BENIN vlan-id 210
+set vlans EFCC_ENUGU vlan-id 2208
+set vlans EFCC_GOMBE vlan-id 395
+set vlans EFCC_IBADAN vlan-id 391
+set vlans EFCC_KADUNA vlan-id 397
+set vlans EFCC_KWARA vlan-id 133
+set vlans EFCC_MAIDUGURI vlan-id 394
+set vlans EFCC_MAKURDI vlan-id 398
+set vlans EFCC_PH_NETWORK vlan-id 396
+set vlans EFCC_SOKOTO vlan-id 117
+set vlans EFCC_UYO vlan-id 277
+set vlans EFCC_VPN vlan-id 99
+set vlans EMERGING-AFRICA-GROUP-ZONE3 vlan-id 259
+set vlans ENTERPRISE-NSX vlan-id 669
+set vlans ENTERPRISE-UNIFIED-TEST vlan-id 4090
+set vlans ENTERPRISE-UNIJOS-LAB-8 vlan-id 30
+set vlans ENTERPRISE-UNIJOS-LAN1 vlan-id 968
+set vlans ENTERPRISE-UNIJOS-LAN2 vlan-id 969
+set vlans ENTERPRISE-UNIJOS-LAN3 vlan-id 970
+set vlans ENTERPRISE-UNIJOS-LAN4 vlan-id 971
+set vlans ENTERPRISE-UNIJOS-LAN5 vlan-id 972
+set vlans ENTERPRISE-UNIJOS-LAN6 vlan-id 973
+set vlans ENTERPRISE-UNIJOS-LAN7 vlan-id 974
+set vlans ESXi-iLO-MANAGEMENT vlan-id 1004
+set vlans ETACT_LIFECAMP_INTERNET vlan-id 855
+set vlans ETISALAT vlan-id 31
+set vlans ETISALAT-LH vlan-id 3909
+set vlans ETISALAT-LH l3-interface irb.3909
+set vlans ETISALAT-SIP-SERVICE vlan-id 1117
+set vlans ETISALAT-SIP2-SERVICE vlan-id 1118
+set vlans EXARO_INTERNET2 vlan-id 832
+set vlans EXARO_Internet vlan-id 826
+set vlans EXTERNAL-FACING-APP-DMZ vlan-id 206
+set vlans FBN description FirstBankCapital
+set vlans FBN vlan-id 85
+set vlans FBNCAPITAL vlan-id 2715
+set vlans FHI-ECOWAS vlan-id 693
+set vlans FHI360 vlan-id 714
+set vlans FIN_INSURANCE_STORAGE vlan-id 849
+set vlans FIN_Insurance_FCMB vlan-id 56
+set vlans FLUENT-SERVICE vlan-id 875
+set vlans FTTH-LAB vlan-id 464
+set vlans FTTH-LAB2 vlan-id 564
+set vlans FinBank_Insurance vlan-id 818
+set vlans GAIN-INTERNET vlan-id 828
+set vlans GATEWAYINTERNET vlan-id 130
+set vlans GATEWAYINTERNET interface ae0.130
+set vlans GATEWAYINTERNET interface ae1.130
+set vlans GATEWAYINTERNET interface ge-0/0/10.130
+set vlans GATEWAYINTERNET interface ge-0/0/6.130
+set vlans GATEWAYINTERNET interface ge-1/0/6.130
+set vlans GATEWAYINTERNET interface ge-0/0/3.130
+set vlans GATEWAYINTERNET interface ge-0/0/2.130
+set vlans GEEKHUB-NINAS vlan-id 819
+set vlans GEOQINETIQ vlan-id 865
+set vlans GEORGES-RESIDENCE-LAN vlan-id 466
+set vlans GEORGES-RESIDENCE-LAN l3-interface irb.466
+set vlans GEORGES-RESIDENCE-WAN vlan-id 467
+set vlans GIZ-ASOKORO vlan-id 457
+set vlans GIZ-MOVE vlan-id 712
+set vlans GMIKE_INTERNET vlan-id 777
+set vlans GOODLUCK-FOUNDATION vlan-id 809
+set vlans GRAND-TEST vlan-id 419
+set vlans GT_BANK_LH vlan-id 380
+set vlans Gadzama vlan-id 917
+set vlans HALL7-INTERNET-WAN vlan-id 377
+set vlans HALL_7_INTERNET vlan-id 376
+set vlans HALL_7_INTERNET l3-interface irb.376
+set vlans HAMU-LEGAL vlan-id 909
+set vlans HEALTH-FINANCE vlan-id 911
+set vlans HELLO-TRACTOR description ABUJAINVEST
+set vlans HELLO-TRACTOR vlan-id 820
+set vlans HERITAGE-BANK vlan-id 906
+set vlans HERITAGE-BANK-RESIDENCE vlan-id 898
+set vlans HERITAGE-BANK-RESIDENCE interface ae0.898
+set vlans HERITAGE-BANK-RESIDENCE interface ae1.898
+set vlans HERITAGE-BANK-RESIDENCE interface ge-0/0/10.898
+set vlans HERITAGE-BANK-RESIDENCE interface ge-0/0/6.898
+set vlans HERITAGE-BANK-RESIDENCE interface ge-1/0/6.898
+set vlans HERITAGE-BANK-RESIDENCE interface ge-0/0/3.898
+set vlans HERITAGE-BANK-RESIDENCE interface ge-0/0/2.898
+set vlans HERITAGE-BANK-RESIDENCE l3-interface irb.898
+set vlans HJFMRI_DRL_ASO vlan-id 393
+set vlans HJFMRI_DRL_ASO interface ae0.393
+set vlans HJFMRI_DRL_ASO interface ae1.393
+set vlans HJFMRI_DRL_ASO interface ge-0/0/10.393
+set vlans HJFMRI_DRL_ASO interface ge-0/0/6.393
+set vlans HJFMRI_DRL_ASO interface ge-1/0/6.393
+set vlans HJFMRI_DRL_ASO interface ge-0/0/3.393
+set vlans HJFMRI_DRL_ASO interface ge-0/0/2.393
+set vlans HORIZON-INF-SERVICES vlan-id 889
+set vlans HORIZON-INF-SERVICES l3-interface irb.889
+set vlans IBB-UNIVERISTY-Internet vlan-id 867
+set vlans IBGPlink description IBGPlink
+set vlans IBGPlink vlan-id 120
+set vlans ICRC-IDU vlan-id 3841
+set vlans ICRC-INTERNET vlan-id 810
+set vlans ICSL-UNITYBANK-LH vlan-id 87
+set vlans ICSL_Abuja description ICSL_Abuja
+set vlans ICSL_Abuja vlan-id 29
+set vlans ICSL_AfriBank_LASG description ICSL_AfriBank_LASG-Service
+set vlans ICSL_AfriBank_LASG vlan-id 73
+set vlans ICSL_Afribank-iDirect vlan-id 77
+set vlans ICSL_FCMB_LASG description ICSL_AfriBank_LASG-Service
+set vlans ICSL_FCMB_LASG vlan-id 74
+set vlans ICSL_SterlingBank description ICSL_SterlingBank
+set vlans ICSL_SterlingBank vlan-id 70
+set vlans ICSL_TRUSTFUND description ICSL_TRUSTFUND
+set vlans ICSL_UBA_LASG description ICSL_UBA_LASG-Service
+set vlans ICSL_UBA_LASG vlan-id 75
+set vlans ICSL_WemaBank_LASG description ICSL_WemaBank_LASG-Service
+set vlans ICSL_WemaBank_LASG vlan-id 72
+set vlans IFES vlan-id 985
+set vlans IHMS-INTERNET-LAN vlan-id 901
+set vlans IHMS-INTERNET-LAN l3-interface irb.901
+set vlans IL0-Internet vlan-id 127
+set vlans IMF-INTERNET vlan-id 931
+set vlans INTEGRAL-SOLUTIONS vlan-id 454
+set vlans INTERNET-SOLUTIONS-ATC vlan-id 429
+set vlans INTL-REP-INSTITUTE vlan-id 894
+set vlans IOM vlan-id 942
+set vlans IOM-ABUJA-INTERNET vlan-id 2124
+set vlans IOM-BUCHANAN-INTERNET vlan-id 937
+set vlans IOM-CALABAR-INTERNET vlan-id 2122
+set vlans IOM-KANO-INTERNET vlan-id 2123
+set vlans IOM-SAUKA vlan-id 460
+set vlans IOM-SAUKA interface ae0.460
+set vlans IOM-SAUKA interface ae1.460
+set vlans IOM-SAUKA interface ge-0/0/10.460
+set vlans IOM-SAUKA interface ge-0/0/6.460
+set vlans IOM-SAUKA interface ge-1/0/6.460
+set vlans IOM-SAUKA interface ge-0/0/3.460
+set vlans IOM-SAUKA interface ge-0/0/2.460
+set vlans IPMI-MANAGEMENT vlan-id 1005
+set vlans IPNX-GREECE_EMBASSY vlan-id 221
+set vlans IPTELECOM-NET vlan-id 2612
+set vlans IPTELECOMS-SAUKA vlan-id 836
+set vlans IPTELECOMS-SAUKA interface ae0.836
+set vlans IPTELECOMS-SAUKA interface ae1.836
+set vlans IPTELECOMS-SAUKA interface ge-0/0/10.836
+set vlans IPTELECOMS-SAUKA interface ge-0/0/6.836
+set vlans IPTELECOMS-SAUKA interface ge-1/0/6.836
+set vlans IPTELECOMS-SAUKA interface ge-0/0/3.836
+set vlans IPTELECOMS-SAUKA interface ge-0/0/2.836
+set vlans IPTELECOMS-SAUKA interface ge-1/0/18.0
+set vlans IRIS-SMART-ENUGU vlan-id 399
+set vlans IRIS-SMART-ENUGU l3-interface irb.399
+set vlans IRIS-SMART-IMM vlan-id 2103
+set vlans IRIS-SMART-IMM l3-interface irb.2103
+set vlans IRIS-SMART-MAITAMA vlan-id 437
+set vlans IRIS-SMART-SAUKA vlan-id 601
+set vlans IRIS-SMART-SAUKA interface ae0.601
+set vlans IRIS-SMART-SAUKA interface ae1.601
+set vlans IRIS-SMART-SAUKA interface ge-0/0/10.601
+set vlans IRIS-SMART-SAUKA interface ge-0/0/6.601
+set vlans IRIS-SMART-SAUKA interface ge-1/0/6.601
+set vlans IRIS-SMART-SAUKA interface ge-0/0/3.601
+set vlans IRIS-SMART-SAUKA interface ge-0/0/2.601
+set vlans IRIS-SMART-TOTAL-HOUSE vlan-id 868
+set vlans IS-DARK-FIBRE vlan-id 611
+set vlans IS-HUAWEI vlan-id 780
+set vlans IS-JAIZ-BANK-HQ vlan-id 618
+set vlans IS-LAG-ABUJA vlan-id 606
+set vlans IS-LAKECHAD vlan-id 610
+set vlans IS-MAEC vlan-id 614
+set vlans IS-MAY-FRESH vlan-id 616
+set vlans IS-MAY-FRESH l3-interface irb.620
+set vlans IS-ORACLE vlan-id 615
+set vlans IS-PSHAN vlan-id 617
+set vlans IS-RIVER-HOUSE vlan-id 620
+set vlans IS-RIVERS-HOUSE-CBD vlan-id 621
+set vlans ISCotecna description "IS Cotecna to Grandsquare"
+set vlans ISG4S vlan-id 604
+set vlans ISG4S interface ae0.604
+set vlans ISG4S interface ae1.604
+set vlans ISG4S interface ge-0/0/10.604
+set vlans ISG4S interface ge-0/0/6.604
+set vlans ISG4S interface ge-1/0/6.604
+set vlans ISG4S interface ge-0/0/3.604
+set vlans ISG4S interface ge-0/0/2.604
+set vlans ISMICRO-SOFT vlan-id 608
+set vlans ISMICRO-SOFT interface ae0.608
+set vlans ISMICRO-SOFT interface ae1.608
+set vlans ISMICRO-SOFT interface ge-0/0/10.608
+set vlans ISMICRO-SOFT interface ge-0/0/6.608
+set vlans ISMICRO-SOFT interface ge-1/0/6.608
+set vlans ISMICRO-SOFT interface ge-0/0/3.608
+set vlans ISMICRO-SOFT interface ge-0/0/2.608
+set vlans ISStanbic vlan-id 605
+set vlans ISStanbic interface ae0.605
+set vlans ISStanbic interface ae1.605
+set vlans ISStanbic interface ge-0/0/10.605
+set vlans ISStanbic interface ge-0/0/6.605
+set vlans ISStanbic interface ge-1/0/6.605
+set vlans ISStanbic interface ge-0/0/3.605
+set vlans ISStanbic interface ge-0/0/2.605
+set vlans ISWaec description "IS Waec to Grandsquare"
+set vlans ISWaec vlan-id 602
+set vlans ISWaec interface ae0.602
+set vlans ISWaec interface ae1.602
+set vlans ISWaec interface ge-0/0/10.602
+set vlans ISWaec interface ge-0/0/6.602
+set vlans ISWaec interface ge-1/0/6.602
+set vlans ISWaec interface ge-0/0/3.602
+set vlans ISWaec interface ge-0/0/2.602
+set vlans ITALLIAN-EMBASSY vlan-id 1013
+set vlans JAIZ-BANK vlan-id 941
+set vlans JOSEPH-NATHANIEL vlan-id 885
+set vlans JUNIPER-CSO-UNDERLAY vlan-id 213
+set vlans JUNIPER-LAB-LAN vlan-id 613
+set vlans JUNIPER-LAB-WAN vlan-id 880
+set vlans John-Snow vlan-id 716
+set vlans KAUFMAN_GLOBAL_LONGHAUL vlan-id 314
+set vlans KSA_MEDICAL_CENTRE vlan-id 816
+set vlans KSA_MEDICAL_CENTRE interface ae0.816
+set vlans KSA_MEDICAL_CENTRE interface ae1.816
+set vlans KSA_MEDICAL_CENTRE interface ge-0/0/10.816
+set vlans KSA_MEDICAL_CENTRE interface ge-0/0/6.816
+set vlans KSA_MEDICAL_CENTRE interface ge-1/0/6.816
+set vlans KSA_MEDICAL_CENTRE interface ge-0/0/3.816
+set vlans KSA_MEDICAL_CENTRE interface ge-0/0/2.816
+set vlans L3-AEDC-KANO vlan-id 2671
+set vlans L3-EXTERNAL-FACING-APP-DMZ_CLOUD vlan-id 207
+set vlans L3-TO-VRF vlan-id 555
+set vlans L3NAC-TEST vlan-id 550
+set vlans L3_VPN vlan-id 701
+set vlans LAYER3-ABU-RESIDENCE-INTERNET vlan-id 2199
+set vlans LAYER3-BREAKOUT-2 vlan-id 856
+set vlans LAYER3-BREAKOUT-3 vlan-id 538
+set vlans LAYER3-CCTV vlan-id 204
+set vlans LAYER3-CCTV l3-interface irb.204
+set vlans LAYER3-DATA-NETWORK vlan-id 201
+set vlans LAYER3-DATA-NETWORK l3-interface irb.201
+set vlans LAYER3-INTERNAL vlan-id 7
+set vlans LAYER3-LAN-to-9MOBILE vlan-id 238
+set vlans LAYER3-NAC vlan-id 170
+set vlans LAYER3-NSDC vlan-id 2101
+set vlans LAYER3-OFFICE-INTERNET vlan-id 864
+set vlans LAYER3-PUBLIC-SIP description LAYER3-PUBLIC-SIP
+set vlans LAYER3-PUBLIC-SIP vlan-id 827
+set vlans LAYER3-RESOURCES-NETWORK vlan-id 202
+set vlans LAYER3-RESOURCES-NETWORK l3-interface irb.202
+set vlans LAYER3-SECONDARY-DNS vlan-id 126
+set vlans LAYER3-SSL-Internet vlan-id 847
+set vlans LAYER3-VOICE-NETWORK vlan-id 203
+set vlans LAYER3-WEBSITE-LAN vlan-id 595
+set vlans LAYER3-WEBSITE-WAN vlan-id 592
+set vlans LAYER3_CLOUD_INTERNET vlan-id 38
+set vlans LAYER3_CLOUD_INTERNET l3-interface irb.38
+set vlans Lagos_internet_clients vlan-id 40
+set vlans Layer3Network description "Layer3 Internal network"
+set vlans Layer3Network vlan-id 125
+set vlans MAINEONE vlan-id 32
+set vlans MCO-INT vlan-id 737
+set vlans MEDALLION-Internet vlan-id 834
+set vlans MILITARY-PENSIONS-BOARD vlan-id 2526
+set vlans MIN-OF-FINANCE vlan-id 848
+set vlans MINES-AND-STEEL vlan-id 905
+set vlans MONITOR-INTERNET vlan-id 999
+set vlans MTN-FUHSO vlan-id 1101
+set vlans MTN-INTERNET vlan-id 1869
+set vlans MTN-LH vlan-id 787
+set vlans Management_VLAN description Management_VLAN
+set vlans Management_VLAN vlan-id 250
+set vlans Management_VLAN l3-interface irb.250
+set vlans MonacomWimax description "Monacom Wimax"
+set vlans MonacomWimax vlan-id 20
+set vlans NAC-REMEDIATION vlan-id 666
+set vlans NAF-CAS-OFFICE vlan-id 958
+set vlans NAF-CAS-OFFICE l3-interface irb.958
+set vlans NAF-Internet vlan-id 128
+set vlans NAF_COAS-Guest-kado vlan-id 927
+set vlans NASSCO vlan-id 456
+set vlans NASSCO-LAN vlan-id 111
+set vlans NASSCO-SSL-EXTERNAL vlan-id 112
+set vlans NASSCO-WAN vlan-id 110
+set vlans NATIONAL_ASSEMBLY description NATIONAL_ASSEMBLY_COMMISION_INTERNET
+set vlans NATIONAL_ASSEMBLY vlan-id 815
+set vlans NAVY-Internet vlan-id 837
+set vlans NBS-INTERNET-LAN vlan-id 109
+set vlans NBS-INTERNET-LAN l3-interface irb.109
+set vlans NBS-INTERNET-WAN vlan-id 108
+set vlans NCC-9MOBILE vlan-id 599
+set vlans NCC-AIRTEL vlan-id 594
+set vlans NCC-GLO vlan-id 596
+set vlans NCC-INTERNET vlan-id 598
+set vlans NCC-MTN vlan-id 597
+set vlans NCDC-GADUWA vlan-id 1675
+set vlans NCDC-INTERNET vlan-id 939
+set vlans NCDC-VIRTUAL-ROUTER-LAN vlan-id 938
+set vlans NET-APP vlan-id 930
+set vlans NETHERLAND-EMBASSY vlan-id 1012
+set vlans NEXIM-ABJ-CAL vlan-id 2153
+set vlans NEXIM-Internet vlan-id 845
+set vlans NFIU-VLAN-100 vlan-id 100
+set vlans NFIU-VLAN-102 vlan-id 102
+set vlans NFIU-VLAN-103 vlan-id 103
+set vlans NFIU-VLAN-104 vlan-id 104
+set vlans NFIU-VLAN-105 vlan-id 105
+set vlans NFIU-VLAN-106 vlan-id 106
+set vlans NFIU-VLAN-24 vlan-id 24
+set vlans NFIU-WUSEII vlan-id 331
+set vlans NGNOG-INTERNET vlan-id 812
+set vlans NIG-HEALTH-WATCH-INTERNET-LAN vlan-id 409
+set vlans NIG-HEALTH-WATCH-INTERNET-LAN l3-interface irb.409
+set vlans NIG-HEALTH-WATCH-INTERNET-WAN vlan-id 410
+set vlans NIROTECH-Internet vlan-id 823
+set vlans NIZAMIYE-HOSPITAL vlan-id 990
+set vlans NPSCMP vlan-id 798
+set vlans NSX-ESXI-MGT vlan-id 205
+set vlans OANDO vlan-id 1011
+set vlans ON-APP-CONTROLLER vlan-id 882
+set vlans ON-APP-CONTROLLER l3-interface irb.882
+set vlans ON-APP-CONTROLLER-WAN vlan-id 883
+set vlans ON-APP-KVM-LAN vlan-id 1006
+set vlans ON-APP-KVM-WAN vlan-id 698
+set vlans ON-APP-KVM-WAN l3-interface irb.698
+set vlans ON-APP-MANAGEMENT vlan-id 1000
+set vlans ON-APP-TEMPORAL3900 vlan-id 3900
+set vlans OXFORD-POLICY-MANAGEMENT vlan-id 814
+set vlans PANAMA-SERVER vlan-id 928
+set vlans PARTNERS-WEST-AFRICA vlan-id 922
+set vlans PASBBOXX vlan-id 839
+set vlans PHASE3-LONGHAUL vlan-id 3908
+set vlans PHASE_3_VPS vlan-id 300
+set vlans PIND-GH-LAN vlan-id 843
+set vlans PIND-GH-WAN vlan-id 844
+set vlans PIND-SIP-LAN vlan-id 453
+set vlans PIND-SIP-WAN vlan-id 452
+set vlans PIND_STORAGE description Pind_STORAGE_VLAN
+set vlans PIND_STORAGE vlan-id 181
+set vlans PIND_STORAGE_WAN vlan-id 180
+set vlans POPC_BREAKTHROUGH vlan-id 936
+set vlans POPULATION_COUNCIL vlan-id 858
+set vlans PRE-PAYGO2_VR-LAN vlan-id 706
+set vlans PRE-PAYGO2_VR-WAN vlan-id 705
+set vlans PRE-PAYGO3_VR-LAN vlan-id 851
+set vlans PRE-PAYGO3_VR-WAN vlan-id 850
+set vlans PRE-PAYGO_VR-LAN vlan-id 704
+set vlans PRE-PAYGO_VR-WAN vlan-id 703
+set vlans PRIVATE-Internet vlan-id 22
+set vlans PRIVATE-Internet l3-interface irb.22
+set vlans PRIVATE_INTERNET-WAN vlan-id 870
+set vlans PSI_NIGERIA vlan-id 588
+set vlans PWAN-INTERNET vlan-id 326
+set vlans Port-Mirror vlan-id 4094
+set vlans RAYUWA-INT-LAN vlan-id 902
+set vlans RAYUWA-INT-LAN l3-interface irb.902
+set vlans RAYUWA-INT-WAN vlan-id 904
+set vlans RVI_INTERNET vlan-id 841
+set vlans Radial_Circle vlan-id 914
+set vlans Router-to-ProxySG-1 vlan-id 924
+set vlans Router-to-ProxySG-2 vlan-id 925
+set vlans SA-LAN vlan-id 750
+set vlans SACB-LAN vlan-id 981
+set vlans SACB-LAN l3-interface irb.981
+set vlans SACB-WAN vlan-id 982
+set vlans SD1-POC1 vlan-id 505
+set vlans SD1-POC2 vlan-id 506
+set vlans SD1-POC3 vlan-id 507
+set vlans SD1-POC4 vlan-id 508
+set vlans SDWAN_TEST vlan-id 556
+set vlans SI-GRE-TEST vlan-id 166
+set vlans SKYVISION-EUPHRATES vlan-id 347
+set vlans SKYVISION-KARVIS-TECHNOLOGY vlan-id 344
+set vlans SKYVISION-MORTGAGE vlan-id 37
+set vlans SKYVISION-WEST-ATLANTIC vlan-id 343
+set vlans SKYVISION-WEST-ATLANTIC interface ae0.343
+set vlans SKYVISION-WEST-ATLANTIC interface ae1.343
+set vlans SKYVISION-WEST-ATLANTIC interface ge-0/0/10.343
+set vlans SKYVISION-WEST-ATLANTIC interface ge-0/0/6.343
+set vlans SKYVISION-WEST-ATLANTIC interface ge-1/0/6.343
+set vlans SKYVISION-WEST-ATLANTIC interface ge-0/0/3.343
+set vlans SKYVISION-WEST-ATLANTIC interface ge-0/0/2.343
+set vlans SKYVISION_BOLINGO vlan-id 342
+set vlans SKYVISION_GOVT2 vlan-id 340
+set vlans SKYVISION_HORIZON-NEW-MAITAMA vlan-id 348
+set vlans SKYVISION_SAKATE vlan-id 899
+set vlans SKYVISION_SCC vlan-id 200
+set vlans SKYVISION_UNITY-BANK vlan-id 341
+set vlans SOLINA-HEALTH vlan-id 807
+set vlans STERLINGBANK vlan-id 21
+set vlans STERLING_BANK_WIMAX vlan-id 27
+set vlans SV-ABUJA-INTERNET vlan-id 370
+set vlans SVGOVERNMENT-2 vlan-id 345
+set vlans SVGovernment description "the Governement, Aso Drive"
+set vlans SVGovernment vlan-id 161
+set vlans SWIFT-NETWORK-UNITY-BANK vlan-id 2010
+set vlans SYNTELL-Internet vlan-id 811
+set vlans SkyVision-HORIZON vlan-id 47
+set vlans SkyVision-HORIZON_2 vlan-id 34
+set vlans Songhai-Health vlan-id 707
+set vlans Sterling_Longhaul_DR vlan-id 3303
+set vlans Sterling_longhaul description Sterling_longhaul
+set vlans Sterling_longhaul vlan-id 304
+set vlans TANGERINE-LIFE vlan-id 991
+set vlans TEMP-Internet vlan-id 804
+set vlans TEMP-Internet2 vlan-id 129
+set vlans TENDER-YEAR vlan-id 808
+set vlans TEST vlan-id 3999
+set vlans TEST-1018 vlan-id 1018
+set vlans TEST-IS-MAYFRESH vlan-id 2215
+set vlans TEST-REDIRECT vlan-id 2650
+set vlans TEST-SAMSON vlan-id 912
+set vlans TEST-SAMSON l3-interface irb.912
+set vlans TEST-VLAN vlan-id 252
+set vlans TEST1 vlan-id 122
+set vlans TEST2 vlan-id 123
+set vlans TESTING vlan-id 2030
+set vlans UAM-Internet vlan-id 806
+set vlans UBA description "UBA Wimax"
+set vlans UBA vlan-id 28
+set vlans UBA_VPN description "Uba LongHaul"
+set vlans UBA_VPN vlan-id 520
+set vlans UBA_VPN interface ae0.520
+set vlans UBA_VPN interface ae1.520
+set vlans UBA_VPN interface ge-0/0/10.520
+set vlans UBA_VPN interface ge-0/0/6.520
+set vlans UBA_VPN interface ge-1/0/6.520
+set vlans UBA_VPN interface ge-0/0/3.520
+set vlans UBA_VPN interface ge-0/0/2.520
+set vlans UBA_VPN l3-interface irb.520
+set vlans UBEC-WAN vlan-id 619
+set vlans UBEC_INTERNET vlan-id 612
+set vlans UBEC_INTERNET l3-interface irb.612
+set vlans UMB-MAGIC-WUSE2-INTERNET vlan-id 934
+set vlans UMB-MGIC vlan-id 916
+set vlans UNDP-Internet vlan-id 846
+set vlans UNDP-UN vlan-id 940
+set vlans UNDP-UN-HOUSE vlan-id 866
+set vlans UNDP-UN-HOUSE interface ae0.866
+set vlans UNDP-UN-HOUSE interface ae1.866
+set vlans UNDP-UN-HOUSE interface ge-0/0/10.866
+set vlans UNDP-UN-HOUSE interface ge-0/0/6.866
+set vlans UNDP-UN-HOUSE interface ge-1/0/6.866
+set vlans UNDP-UN-HOUSE interface ge-0/0/3.866
+set vlans UNDP-UN-HOUSE interface ge-0/0/2.866
+set vlans UNI-JOS-TEST-INTERNET vlan-id 262
+set vlans UNICEF-AKURE vlan-id 2025
+set vlans UNICEF-INTERNET vlan-id 953
+set vlans UNICEF-KANO vlan-id 2423
+set vlans UNIFI-CONTROLLER vlan-id 569
+set vlans Unified_LAN vlan-id 45
+set vlans Unified_LAN l3-interface irb.45
+set vlans VCD-EXTERNAL-NETWORK vlan-id 929
+set vlans VCIT-CHURCHGATE-1 vlan-id 257
+set vlans VCIT-CHURCHGATE-2 vlan-id 258
+set vlans VCIT-CHURCHGATE-4 vlan-id 255
+set vlans VCIT-JABI vlan-id 408
+set vlans VENTURES-PLATFORMS vlan-id 821
+set vlans VERSE-CONSULTING-AND-IT vlan-id 962
+set vlans VIRTUAL-SA vlan-id 881
+set vlans VPLS vlan-id 700
+set vlans VSO-Internet vlan-id 854
+set vlans VSO2 vlan-id 900
+set vlans WAN-OPTIMIZER1 vlan-id 920
+set vlans WEB-INDICIES vlan-id 226
+set vlans WHO-AROCHUKWU-INTERNET vlan-id 824
+set vlans WHO-AROCHUKWU-INTERNET interface ae0.824
+set vlans WHO-AROCHUKWU-INTERNET interface ae1.824
+set vlans WHO-AROCHUKWU-INTERNET interface ge-0/0/10.824
+set vlans WHO-AROCHUKWU-INTERNET interface ge-0/0/6.824
+set vlans WHO-AROCHUKWU-INTERNET interface ge-1/0/6.824
+set vlans WHO-AROCHUKWU-INTERNET interface ge-0/0/3.824
+set vlans WHO-AROCHUKWU-INTERNET interface ge-0/0/2.824
+set vlans WHO-ASOKORO-OLDCBN vlan-id 860
+set vlans WHO-ASOKORO-OLDCBN interface ae0.860
+set vlans WHO-ASOKORO-OLDCBN interface ae1.860
+set vlans WHO-ASOKORO-OLDCBN interface ge-0/0/10.860
+set vlans WHO-ASOKORO-OLDCBN interface ge-0/0/6.860
+set vlans WHO-ASOKORO-OLDCBN interface ge-1/0/6.860
+set vlans WHO-ASOKORO-OLDCBN interface ge-0/0/3.860
+set vlans WHO-ASOKORO-OLDCBN interface ge-0/0/2.860
+set vlans WHO-UN-HOUSE vlan-id 792
+set vlans WHO-UN-HOUSE l3-interface irb.792
+set vlans WHO2-Internet vlan-id 825
+set vlans WHO_VPN vlan-id 852
+set vlans WHO_VPN interface ae0.852
+set vlans WHO_VPN interface ae1.852
+set vlans WHO_VPN interface ge-0/0/10.852
+set vlans WHO_VPN interface ge-0/0/6.852
+set vlans WHO_VPN interface ge-1/0/6.852
+set vlans WHO_VPN interface ge-0/0/3.852
+set vlans WHO_VPN interface ge-0/0/2.852
+set vlans WINROCK vlan-id 477
+set vlans WIOCC-INTERNET vlan-id 3830
+set vlans WORKS-AND-CONNECT vlan-id 729
+set vlans WORLBANK-MAITAMA vlan-id 791
+set vlans WORLDBANK-INTERNET vlan-id 375
+set vlans WORLD_BANK_ANNEX vlan-id 986
+set vlans YENTECH-Internet vlan-id 805
+set vlans YOUTH-HUB-INTERNET vlan-id 921
+set vlans YOUTH-HUB-INTERNET l3-interface irb.921
+set vlans ZENITH-DMD-OFFICE-INTERNET-LAN vlan-id 892
+set vlans ZENITH-DMD-OFFICE-INTERNET-LAN l3-interface irb.892
+set vlans ZENITH-DMD-OFFICE-INTERNET-WAN vlan-id 992
+set vlans ZENITH-ED-OFFICE-INTERNET vlan-id 874
+set vlans ZENITH-ED-OFFICE-INTERNET l3-interface irb.874
+set vlans ZENITH-ED-OFFICE-INTERNET-WAN-WAN vlan-id 994
+set vlans default vlan-id 1
+set vlans default l3-interface irb.0
+set vlans diamond vlan-id 23
+set vlans secondaryskyvision vlan-id 43
+set vlans skyvision vlan-id 42
+set vlans zaintest vlan-id 5
+set vlans zenit2 vlan-id 25
+set vlans zenith description "zenith banks vlan"
+set vlans zenith vlan-id 444
+set vlans zenith interface ae0.444
+set vlans zenith interface ae1.444
+set vlans zenith interface ge-0/0/10.444
+set vlans zenith interface ge-0/0/6.444
+set vlans zenith interface ge-1/0/6.444
+set vlans zenith interface ge-0/0/3.444
+set vlans zenith interface ge-0/0/2.444
+set vlans zenithaminu2maitama vlan-id 425
+set vlans zenithaminu2maitama interface ae0.425
+set vlans zenithaminu2maitama interface ae1.425
+set vlans zenithaminu2maitama interface ge-0/0/10.425
+set vlans zenithaminu2maitama interface ge-0/0/6.425
+set vlans zenithaminu2maitama interface ge-1/0/6.425
+set vlans zenithaminu2maitama interface ge-0/0/3.425
+set vlans zenithaminu2maitama interface ge-0/0/2.425
+set vlans zenitmetro vlan-id 390
+set vlans zenitmetro interface ae0.390
+set vlans zenitmetro interface ae1.390
+set vlans zenitmetro interface ge-0/0/10.390
+set vlans zenitmetro interface ge-0/0/6.390
+set vlans zenitmetro interface ge-1/0/6.390
+set vlans zenitmetro interface ge-0/0/3.390
+set vlans zenitmetro interface ge-0/0/2.390
+set vlans zenitmetro l3-interface irb.390
+
+
