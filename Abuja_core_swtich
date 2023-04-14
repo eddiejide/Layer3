@@ -29,7 +29,7 @@ set system time-zone Africa/Lagos
 set system authentication-order radius
 set system authentication-order password
 set system name-server 41.217.204.165
-set system name-server 4.2.2.2
+set system name-server 4.5.2.2
 set system name-server 8.8.8.8
 set system radius-server 10.199.0.233 secret "$9$7FNb24oGDkPxNi.5T3nyleW7-s24"
 set system radius-options password-protocol mschap-v2
